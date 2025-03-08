@@ -27,6 +27,7 @@ export default {
 body {
   margin: 0px !important;
   scrollbar-width: none; /* Hide scrollbar (Firefox) */
+  overflow-y: hidden;
 }
 
 ::-webkit-scrollbar {

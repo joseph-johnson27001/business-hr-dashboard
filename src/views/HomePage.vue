@@ -120,7 +120,7 @@ export default {
   .kpi-container {
     grid-template-columns: repeat(3, 1fr);
   }
-  .graph-container {
+  .graphs-container {
     grid-template-columns: 1fr;
   }
 }
