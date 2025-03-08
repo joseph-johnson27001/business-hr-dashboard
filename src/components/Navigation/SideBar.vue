@@ -139,11 +139,11 @@ i {
 }
 
 .toggle-btn i {
-  font-size: 12px;
+  font-size: 10px;
   color: #006ba6;
   text-align: center;
   display: flex;
   justify-content: center;
-  margin-right: 0px;
+  margin: 0px;
 }
 </style>

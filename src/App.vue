@@ -51,6 +51,6 @@ body {
 
 .content {
   flex: 1;
-  padding: 20px;
+  padding: 10px;
 }
 </style>
