@@ -1,6 +1,6 @@
 <template>
   <div class="topnav">
-    <h3>HR Dashboard</h3>
+    <h3 class="heading">HR Dashboard</h3>
 
     <div class="user-profile">
       <div class="search-container">
@@ -50,6 +50,11 @@ export default {
   color: #006ba6;
 }
 
+.heading {
+  font-family: "Roboto";
+  font-size: 1rem;
+}
+
 .search-container {
   display: flex;
   align-items: center;
@@ -58,12 +63,11 @@ export default {
 
 .search-input {
   height: 25px;
-  width: 100px;
+  width: 250px;
   padding: 5px 10px;
   border: 1px solid #bbb;
   border-radius: 4px;
   font-size: 14px;
-  transition: width 0.3s ease;
   margin-right: 10px;
   background-color: #fefefe;
   font-family: "Assistant";
@@ -72,7 +76,6 @@ export default {
 .search-input:focus {
   outline: none;
   border-color: #01a9f2;
-  width: 250px;
 }
 
 .search-input::placeholder {
@@ -97,9 +100,5 @@ export default {
   font-size: 20px;
   margin-right: 10px;
   cursor: pointer;
-}
-
-.notification-icon:hover {
-  color: #01a9f2;
 }
 </style>

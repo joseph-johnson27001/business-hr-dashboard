@@ -124,7 +124,7 @@ i {
   margin-left: 20px;
   padding-top: 20px;
   cursor: pointer;
-  color: #444;
+  color: #555;
 }
 
 .sidebar.collapsed i {
