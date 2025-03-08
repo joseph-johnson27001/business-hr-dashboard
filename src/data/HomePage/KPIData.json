@@ -1,0 +1,10 @@
+{
+  "totalEmployees": 1200,
+  "newHiresThisMonth": 15,
+  "employeesAbsentToday": 8,
+  "employeeSatisfaction": "85%",
+  "openPositions": 7,
+  "retentionRate": "95%",
+  "totalMonthlyPayroll": "$150,000",
+  "employeeTurnoverThisMonth": "3%"
+}

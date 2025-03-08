@@ -16,6 +16,7 @@
 
 <script>
 import KPICard from "@/components/UI/KPICard.vue";
+import { fetchKPIData } from "@/api/homepage.js"; // Updated import
 
 export default {
   name: "HomePage",
@@ -27,43 +28,62 @@ export default {
       kpis: [
         {
           icon: "fas fa-users",
-          stat: 1200,
           title: "Total Employees",
-          gradient: "linear-gradient(to right, #ff7043, #ff8a65)",
+          gradient: "linear-gradient(to right, #ff7043, #ff8a65)", // Slightly lighter orange
+          key: "totalEmployees",
         },
         {
           icon: "fas fa-user-plus",
-          stat: 15,
-          title: "New Hires",
-          gradient: "linear-gradient(to right, #66bb6a, #81c784)",
+          title: "New Hires This Month",
+          gradient: "linear-gradient(to right, #66bb6a, #81c784)", // Slightly lighter green
+          key: "newHiresThisMonth",
         },
         {
           icon: "fas fa-user-times",
-          stat: 8,
-          title: "Employees Absent",
-          gradient: "linear-gradient(to right, #f06292, #f48fb1)",
+          title: "Employees Absent Today",
+          gradient: "linear-gradient(to right, #f06292, #f48fb1)", // Slightly lighter pink
+          key: "employeesAbsentToday",
         },
         {
           icon: "fas fa-smile",
-          stat: "85%",
-          title: "Employee Satisfaction",
-          gradient: "linear-gradient(to right, #64b5f6, #81d4fa)",
+          title: "Employee Satisfaction (Pulse)",
+          gradient: "linear-gradient(to right, #64b5f6, #81d4fa)", // Slightly lighter blue
+          key: "employeeSatisfaction",
         },
         {
           icon: "fas fa-briefcase",
-          stat: 7,
           title: "Open Positions",
-          gradient: "linear-gradient(to right, #fdd835, #ffeb3b)",
+          gradient: "linear-gradient(to right, #fdd835, #ffeb3b)", // Slightly lighter yellow
+          key: "openPositions",
         },
-
+        {
+          icon: "fas fa-refresh",
+          title: "Retention Rate",
+          gradient: "linear-gradient(to right, #66bb6a, #81c784)", // Slightly lighter green
+          key: "retentionRate",
+        },
         {
           icon: "fas fa-dollar-sign",
-          stat: "$500,000",
-          title: "Total Payroll",
-          gradient: "linear-gradient(to right, #ffb74d, #ffcc80)",
+          title: "Total Monthly Payroll",
+          gradient: "linear-gradient(to right, #ffb74d, #ffcc80)", // Slightly lighter yellow-orange
+          key: "totalMonthlyPayroll",
+        },
+        {
+          icon: "fas fa-users-slash",
+          title: "Employee Turnover This Month",
+          gradient: "linear-gradient(to right, #ff7043, #ff8a65)", // Slightly lighter orange
+          key: "employeeTurnoverThisMonth",
         },
       ],
     };
+  },
+  created() {
+    fetchKPIData().then((data) => {
+      this.kpis = this.kpis.map((kpi) => ({
+        ...kpi,
+        stat: data[kpi.key],
+      }));
+    });
   },
 };
 </script>
@@ -71,14 +91,14 @@ export default {
 <style scoped>
 .kpi-container {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   flex-wrap: wrap;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1200px) {
   .kpi-container {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
