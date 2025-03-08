@@ -39,19 +39,19 @@ export default {
         },
         {
           icon: "fas fa-user-plus",
-          title: "New Hires This Month",
+          title: "New Hires",
           gradient: "linear-gradient(to right, #66bb6a, #81c784)",
           key: "newHiresThisMonth",
         },
         {
           icon: "fas fa-user-times",
-          title: "Employees Absent Today",
+          title: "Employees Absent",
           gradient: "linear-gradient(to right, #f06292, #f48fb1)",
           key: "employeesAbsentToday",
         },
         {
           icon: "fas fa-smile",
-          title: "Employee Satisfaction (Pulse)",
+          title: "Employee Satisfaction",
           gradient: "linear-gradient(to right, #64b5f6, #81d4fa)",
           key: "employeeSatisfaction",
         },
@@ -67,18 +67,18 @@ export default {
           gradient: "linear-gradient(to right, #66bb6a, #81c784)",
           key: "retentionRate",
         },
-        {
-          icon: "fas fa-dollar-sign",
-          title: "Total Monthly Payroll",
-          gradient: "linear-gradient(to right, #ffb74d, #ffcc80)",
-          key: "totalMonthlyPayroll",
-        },
-        {
-          icon: "fas fa-users-slash",
-          title: "Employee Turnover This Month",
-          gradient: "linear-gradient(to right, #ff7043, #ff8a65)",
-          key: "employeeTurnoverThisMonth",
-        },
+        // {
+        //   icon: "fas fa-dollar-sign",
+        //   title: "Total Monthly",
+        //   gradient: "linear-gradient(to right, #ffb74d, #ffcc80)",
+        //   key: "totalMonthlyPayroll",
+        // },
+        // {
+        //   icon: "fas fa-user-minus",
+        //   title: "Employee Turnover",
+        //   gradient: "linear-gradient(to right, #ff7043, #ff8a65)",
+        //   key: "employeeTurnoverThisMonth",
+        // },
       ],
     };
   },
@@ -98,12 +98,18 @@ export default {
 <style scoped>
 .kpi-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 10px;
   flex-wrap: wrap;
 }
 
 @media (max-width: 1200px) {
+  .kpi-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
   .kpi-container {
     grid-template-columns: repeat(2, 1fr);
   }

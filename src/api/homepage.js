@@ -3,6 +3,6 @@ export const fetchKPIData = () => {
     setTimeout(() => {
       const data = require("@/data/HomePage/KPIData.json");
       resolve(data);
-    }, 500);
+    }, 250);
   });
 };
