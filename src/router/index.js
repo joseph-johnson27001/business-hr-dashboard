@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-// Import your page components
 import Home from "@/views/HomePage.vue";
 import Employees from "@/views/EmployeesPage.vue";
 import Payroll from "@/views/PayrollPage.vue";

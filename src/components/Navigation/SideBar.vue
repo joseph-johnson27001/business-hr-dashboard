@@ -1,25 +1,42 @@
 <template>
-  <div class="sidebar">
+  <div :class="['sidebar', { collapsed: isCollapsed }]">
+    <!-- Toggle Button -->
+    <div class="toggle-btn" @click="toggleSidebar">
+      <i class="fas fa-bars"></i>
+    </div>
+
     <nav>
       <ul>
         <li>
           <router-link to="/" class="nav-link">
-            <i class="fas fa-home"></i> <span>Home</span>
+            <i class="fas fa-home"></i>
+            <span :style="{ visibility: isCollapsed ? 'hidden' : 'visible' }"
+              >Home</span
+            >
           </router-link>
         </li>
         <li>
           <router-link to="/employees" class="nav-link">
-            <i class="fas fa-users"></i> <span>Employees</span>
+            <i class="fas fa-users"></i>
+            <span :style="{ visibility: isCollapsed ? 'hidden' : 'visible' }"
+              >Employees</span
+            >
           </router-link>
         </li>
         <li>
           <router-link to="/payroll" class="nav-link">
-            <i class="fas fa-chart-line"></i> <span>Payroll</span>
+            <i class="fas fa-chart-line"></i>
+            <span :style="{ visibility: isCollapsed ? 'hidden' : 'visible' }"
+              >Payroll</span
+            >
           </router-link>
         </li>
         <li>
           <router-link to="/attendance" class="nav-link">
-            <i class="fas fa-building"></i> <span>Attendance</span>
+            <i class="fas fa-building"></i>
+            <span :style="{ visibility: isCollapsed ? 'hidden' : 'visible' }"
+              >Attendance</span
+            >
           </router-link>
         </li>
       </ul>
@@ -30,6 +47,16 @@
 <script>
 export default {
   name: "SideBar",
+  data() {
+    return {
+      isCollapsed: false,
+    };
+  },
+  methods: {
+    toggleSidebar() {
+      this.isCollapsed = !this.isCollapsed;
+    },
+  },
 };
 </script>
 
@@ -37,14 +64,26 @@ export default {
 .sidebar {
   width: 225px;
   background-color: #ffffff;
-  padding: 0 10px;
   height: 100%;
   border-right: 1px solid #ccc;
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+nav {
+  width: 100%;
 }
 
 nav ul {
   list-style: none;
   padding: 0;
+  width: 100%;
 }
 
 nav li {
@@ -52,8 +91,7 @@ nav li {
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin: 10px 0px;
+  margin: 10px;
   border-radius: 5px;
 }
 
@@ -61,11 +99,18 @@ nav li:hover {
   background-color: #f0f0f0;
 }
 
+.nav-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
 i {
-  font-size: 1.2em;
+  font-size: 1.2rem;
   width: 25px;
   text-align: center;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .fas.fa-home {
@@ -84,15 +129,14 @@ i {
   color: #4caf50;
 }
 
-.nav-link {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  text-decoration: none;
-  color: inherit;
+.toggle-btn {
+  margin-left: 20px;
+  padding-top: 20px;
+  cursor: pointer;
+  color: #444;
 }
 
-.nav-link:hover {
-  background-color: #f0f0f0;
+.sidebar.collapsed i {
+  margin-right: 0;
 }
 </style>
