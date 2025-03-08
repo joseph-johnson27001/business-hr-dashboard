@@ -39,7 +39,7 @@ export default {
   background-color: #fff;
   border-radius: 5px;
   border: 1px solid #ddd;
-  padding: 20px;
+  padding: 15px;
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -47,8 +47,8 @@ export default {
 }
 
 .kpi-icon {
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
   border-radius: 8px;
   display: flex;
   justify-content: center;

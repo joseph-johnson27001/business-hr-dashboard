@@ -29,7 +29,7 @@ export default {
           icon: "fas fa-users",
           stat: 1200,
           title: "Total Employees",
-          gradient: "linear-gradient(to right, #ff7043, #ffcc80)",
+          gradient: "linear-gradient(to right, #ff7043, #ff8a65)",
         },
         {
           icon: "fas fa-user-plus",
@@ -44,34 +44,34 @@ export default {
           gradient: "linear-gradient(to right, #f06292, #f48fb1)",
         },
         {
-          icon: "fas fa-question-circle",
-          stat: 12,
-          title: "Pending HR Requests",
-          gradient: "linear-gradient(to right, #4db6ac, #80cbc4)",
-        },
-        {
           icon: "fas fa-smile",
           stat: "85%",
           title: "Employee Satisfaction (Pulse)",
           gradient: "linear-gradient(to right, #64b5f6, #81d4fa)",
         },
         {
-          icon: "fas fa-tasks",
-          stat: 5,
-          title: "Overdue Tasks",
-          gradient: "linear-gradient(to right, #ffb74d, #ffb300)",
-        },
-        {
-          icon: "fas fa-chalkboard-teacher",
-          stat: "50 hours",
-          title: "Training Hours This Week",
-          gradient: "linear-gradient(to right, #9575cd, #b39ddb)",
-        },
-        {
           icon: "fas fa-briefcase",
           stat: 7,
           title: "Open Positions",
           gradient: "linear-gradient(to right, #fdd835, #ffeb3b)",
+        },
+        {
+          icon: "fas fa-sync-alt",
+          stat: "90%",
+          title: "Retention Rate",
+          gradient: "linear-gradient(to right, #81c784, #a5d6a7)",
+        },
+        {
+          icon: "fas fa-dollar-sign",
+          stat: "$500,000",
+          title: "Total Monthly Payroll",
+          gradient: "linear-gradient(to right, #ffb74d, #ffcc80)",
+        },
+        {
+          icon: "fas fa-user-minus",
+          stat: 5,
+          title: "Employee Turnover This Month",
+          gradient: "linear-gradient(to right, #e57373, #f44336)",
         },
       ],
     };
@@ -88,12 +88,6 @@ export default {
 }
 
 @media (max-width: 1200px) {
-  .kpi-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 800px) {
   .kpi-container {
     grid-template-columns: repeat(2, 1fr);
   }
