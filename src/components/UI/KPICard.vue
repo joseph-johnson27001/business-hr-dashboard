@@ -1,11 +1,19 @@
 <template>
   <div class="kpi-card">
-    <div class="kpi-icon" :style="{ background: gradient }">
-      <i :class="icon"></i>
+    <div class="kpi-card-top">
+      <div class="kpi-icon" :style="{ background: gradient }">
+        <i :class="icon"></i>
+      </div>
+      <div class="kpi-stat">
+        <div class="stat-value">{{ stat }}</div>
+        <div class="stat-title">{{ title }}</div>
+      </div>
     </div>
-    <div class="kpi-stat">
-      <div class="stat-value">{{ stat }}</div>
-      <div class="stat-title">{{ title }}</div>
+    <div class="kpi-card-bottom">
+      <hr class="divider" />
+      <span class="view-more-text">
+        View Details <i class="fas fa-chevron-right"></i>
+      </span>
     </div>
   </div>
 </template>
@@ -39,8 +47,13 @@ export default {
   background-color: #fff;
   border-radius: 5px;
   border: 1px solid #ddd;
-  padding: 15px;
-  text-align: center;
+  padding: 20px;
+  display: flex;
+  font-family: "Roboto";
+  flex-direction: column;
+}
+
+.kpi-card-top {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -61,7 +74,7 @@ export default {
 }
 
 .stat-value {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   color: #333;
   text-align: left;
@@ -70,5 +83,29 @@ export default {
 .stat-title {
   font-size: 14px;
   color: #888;
+}
+
+.kpi-card-bottom {
+  margin-top: auto;
+  cursor: pointer;
+}
+
+.divider {
+  margin: 15px 0;
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+
+.view-more-text {
+  font-size: 12px;
+  color: #006ba6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.view-more-text i {
+  margin-left: 5px;
 }
 </style>

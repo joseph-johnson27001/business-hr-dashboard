@@ -34,19 +34,19 @@ export default {
         {
           icon: "fas fa-user-plus",
           stat: 15,
-          title: "New Hires This Month",
+          title: "New Hires",
           gradient: "linear-gradient(to right, #66bb6a, #81c784)",
         },
         {
           icon: "fas fa-user-times",
           stat: 8,
-          title: "Employees Absent Today",
+          title: "Employees Absent",
           gradient: "linear-gradient(to right, #f06292, #f48fb1)",
         },
         {
           icon: "fas fa-smile",
           stat: "85%",
-          title: "Employee Satisfaction (Pulse)",
+          title: "Employee Satisfaction",
           gradient: "linear-gradient(to right, #64b5f6, #81d4fa)",
         },
         {
@@ -55,23 +55,12 @@ export default {
           title: "Open Positions",
           gradient: "linear-gradient(to right, #fdd835, #ffeb3b)",
         },
-        {
-          icon: "fas fa-sync-alt",
-          stat: "90%",
-          title: "Retention Rate",
-          gradient: "linear-gradient(to right, #81c784, #a5d6a7)",
-        },
+
         {
           icon: "fas fa-dollar-sign",
           stat: "$500,000",
-          title: "Total Monthly Payroll",
+          title: "Total Payroll",
           gradient: "linear-gradient(to right, #ffb74d, #ffcc80)",
-        },
-        {
-          icon: "fas fa-user-minus",
-          stat: 5,
-          title: "Employee Turnover This Month",
-          gradient: "linear-gradient(to right, #e57373, #f44336)",
         },
       ],
     };
@@ -82,14 +71,14 @@ export default {
 <style scoped>
 .kpi-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 10px;
   flex-wrap: wrap;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .kpi-container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
