@@ -46,10 +46,10 @@ body {
   flex-direction: column;
   flex: 1;
   background-color: #f5f5f5;
+  height: 100dvh;
 }
 
 .content {
   flex: 1;
-  padding: 20px;
 }
 </style>
