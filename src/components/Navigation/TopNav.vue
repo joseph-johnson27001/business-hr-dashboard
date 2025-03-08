@@ -1,7 +1,7 @@
 <!-- TopNav.vue -->
 <template>
   <div class="topnav">
-    <h1>HR Dashboard</h1>
+    <h3>HR Dashboard</h3>
   </div>
 </template>
 

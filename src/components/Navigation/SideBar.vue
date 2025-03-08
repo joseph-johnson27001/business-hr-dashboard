@@ -2,6 +2,7 @@
   <div class="sidebar">
     <nav>
       <ul>
+        <li><i class="fas fa-home"></i> <span>Home</span></li>
         <li><i class="fas fa-users"></i> <span>Employees</span></li>
         <li><i class="fas fa-chart-line"></i> <span>Payroll</span></li>
         <li><i class="fas fa-building"></i> <span>Attendance</span></li>
@@ -50,8 +51,12 @@ i {
   text-align: center;
 }
 
+.fas.fa-home {
+  color: #01a9f2;
+}
+
 .fas.fa-users {
-  color: #2196f3;
+  color: #d86890;
 }
 
 .fas.fa-chart-line {
