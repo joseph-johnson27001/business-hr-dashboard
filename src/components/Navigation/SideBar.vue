@@ -2,7 +2,9 @@
   <div :class="['sidebar', { collapsed: isCollapsed }]">
     <!-- Toggle Button -->
     <div class="toggle-btn" @click="toggleSidebar">
-      <i class="fas fa-bars"></i>
+      <i
+        :class="['fas', isCollapsed ? 'fa-chevron-right' : 'fa-chevron-left']"
+      ></i>
     </div>
 
     <nav>
@@ -66,6 +68,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: relative;
 }
 
 .sidebar.collapsed {
@@ -121,13 +124,26 @@ i {
 }
 
 .toggle-btn {
-  margin-left: 20px;
-  padding-top: 20px;
+  position: absolute;
+  right: -0.75rem;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  color: #555;
 }
 
-.sidebar.collapsed i {
-  margin-right: 0;
+.toggle-btn i {
+  font-size: 12px;
+  color: #006ba6;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-right: 0px;
 }
 </style>
