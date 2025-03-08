@@ -76,7 +76,7 @@ export default {
 .stat-value {
   font-size: 18px;
   font-weight: bold;
-  color: #333;
+  color: #006ba6;
   text-align: left;
 }
 
@@ -99,7 +99,7 @@ export default {
 
 .view-more-text {
   font-size: 12px;
-  color: #006ba6;
+  color: #555;
   display: flex;
   align-items: center;
   justify-content: space-between;
