@@ -26,6 +26,11 @@ export default {
 <style>
 body {
   margin: 0px !important;
+  scrollbar-width: none; /* Hide scrollbar (Firefox) */
+}
+
+::-webkit-scrollbar {
+  display: none; /* Hide scrollbar (Chrome, Safari, Edge) */
 }
 </style>
 
@@ -52,5 +57,6 @@ body {
 .content {
   flex: 1;
   padding: 10px;
+  overflow-y: scroll;
 }
 </style>

@@ -3,15 +3,33 @@
     <LoadingSpinner v-if="isLoading" />
 
     <!-- KPI Cards -->
-    <div v-else class="kpi-container">
-      <KPICard
-        v-for="(kpi, index) in kpis"
-        :key="index"
-        :icon="kpi.icon"
-        :stat="kpi.stat"
-        :title="kpi.title"
-        :gradient="kpi.gradient"
-      />
+    <div v-else>
+      <div class="kpi-container">
+        <KPICard
+          v-for="(kpi, index) in kpis"
+          :key="index"
+          :icon="kpi.icon"
+          :stat="kpi.stat"
+          :title="kpi.title"
+          :gradient="kpi.gradient"
+        />
+      </div>
+
+      <!-- Graph Cards -->
+      <div class="graphs-container">
+        <GraphContainerCard title="Employee Growth">
+          <!-- Future graph component will go here -->
+        </GraphContainerCard>
+        <GraphContainerCard title="Absenteeism Trends">
+          <!-- Future graph component will go here -->
+        </GraphContainerCard>
+        <GraphContainerCard title="Hiring vs Attrition Rate">
+          <!-- Future graph component will go here -->
+        </GraphContainerCard>
+        <GraphContainerCard title="Employee Satisfaction">
+          <!-- Future graph component will go here -->
+        </GraphContainerCard>
+      </div>
     </div>
   </div>
 </template>
@@ -19,6 +37,7 @@
 <script>
 import KPICard from "@/components/UI/KPICard.vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
+import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
 import { fetchKPIData } from "@/api/homepage.js";
 
 export default {
@@ -26,6 +45,7 @@ export default {
   components: {
     KPICard,
     LoadingSpinner,
+    GraphContainerCard,
   },
   data() {
     return {
@@ -67,27 +87,14 @@ export default {
           gradient: "linear-gradient(to right, #66bb6a, #81c784)",
           key: "retentionRate",
         },
-        // {
-        //   icon: "fas fa-dollar-sign",
-        //   title: "Total Monthly",
-        //   gradient: "linear-gradient(to right, #ffb74d, #ffcc80)",
-        //   key: "totalMonthlyPayroll",
-        // },
-        // {
-        //   icon: "fas fa-user-minus",
-        //   title: "Employee Turnover",
-        //   gradient: "linear-gradient(to right, #ff7043, #ff8a65)",
-        //   key: "employeeTurnoverThisMonth",
-        // },
       ],
     };
   },
   created() {
     fetchKPIData().then((data) => {
-      // Update each KPI stat with the corresponding value from the fetched data
       this.kpis = this.kpis.map((kpi) => ({
-        ...kpi, // Keep the original KPI properties
-        stat: data[kpi.key], // Update the stat with the value from the fetched data
+        ...kpi,
+        stat: data[kpi.key],
       }));
       this.isLoading = false;
     });
@@ -100,12 +107,21 @@ export default {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 10px;
-  flex-wrap: wrap;
+}
+
+.graphs-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
 }
 
 @media (max-width: 1200px) {
   .kpi-container {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .graph-container {
+    grid-template-columns: 1fr;
   }
 }
 
