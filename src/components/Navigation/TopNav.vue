@@ -2,9 +2,7 @@
   <div class="topnav">
     <h3>HR Dashboard</h3>
 
-    <!-- User Profile Section -->
     <div class="user-profile">
-      <!-- Search Section -->
       <div class="search-container">
         <input
           type="text"
@@ -14,6 +12,7 @@
           class="search-input"
         />
       </div>
+      <i class="fas fa-bell notification-icon"></i>
       <img
         src="https://via.placeholder.com/40"
         alt="User Profile"
@@ -48,6 +47,7 @@ export default {
   justify-content: space-between;
   padding: 0 20px;
   border-bottom: 1px solid #ccc;
+  color: #006ba6;
 }
 
 .search-container {
@@ -57,15 +57,16 @@ export default {
 }
 
 .search-input {
-  height: 30px;
+  height: 25px;
   width: 100px;
-  padding: 0 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 5px 10px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
   font-size: 14px;
   transition: width 0.3s ease;
   margin-right: 10px;
   background-color: #fefefe;
+  font-family: "Assistant";
 }
 
 .search-input:focus {
@@ -88,6 +89,17 @@ export default {
   height: 30px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid #ccc;
+  border: 1px solid #bbb;
+}
+
+.notification-icon {
+  color: #006ba6;
+  font-size: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.notification-icon:hover {
+  color: #01a9f2;
 }
 </style>

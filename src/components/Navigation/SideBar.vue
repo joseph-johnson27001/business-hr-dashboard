@@ -62,7 +62,7 @@ export default {
 
 <style scoped>
 .sidebar {
-  width: 225px;
+  width: 200px;
   background-color: #ffffff;
   height: 100%;
   border-right: 1px solid #ccc;
@@ -73,7 +73,7 @@ export default {
 }
 
 .sidebar.collapsed {
-  width: 70px;
+  width: 65px;
 }
 
 nav {
