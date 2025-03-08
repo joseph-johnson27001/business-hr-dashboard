@@ -71,6 +71,7 @@ export default {
   font-size: 14px;
   background-color: #fff;
   cursor: pointer;
+  outline: none;
 }
 
 .divider {

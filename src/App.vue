@@ -27,7 +27,6 @@ export default {
 body {
   margin: 0px !important;
   scrollbar-width: none; /* Hide scrollbar (Firefox) */
-  overflow-y: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -53,6 +52,7 @@ body {
   flex: 1;
   background-color: #f5f5f5;
   height: 100dvh;
+  overflow-y: hidden;
 }
 
 .content {
