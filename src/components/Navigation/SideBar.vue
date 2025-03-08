@@ -7,37 +7,21 @@
 
     <nav>
       <ul>
-        <li>
-          <router-link to="/" class="nav-link">
-            <i class="fas fa-home"></i>
-            <span :style="{ visibility: isCollapsed ? 'hidden' : 'visible' }"
-              >Home</span
-            >
-          </router-link>
+        <li @click="goTo('/')">
+          <i class="fas fa-home"></i>
+          <span v-show="textVisible">Home</span>
         </li>
-        <li>
-          <router-link to="/employees" class="nav-link">
-            <i class="fas fa-users"></i>
-            <span :style="{ visibility: isCollapsed ? 'hidden' : 'visible' }"
-              >Employees</span
-            >
-          </router-link>
+        <li @click="goTo('/employees')">
+          <i class="fas fa-users"></i>
+          <span v-show="textVisible">Employees</span>
         </li>
-        <li>
-          <router-link to="/payroll" class="nav-link">
-            <i class="fas fa-chart-line"></i>
-            <span :style="{ visibility: isCollapsed ? 'hidden' : 'visible' }"
-              >Payroll</span
-            >
-          </router-link>
+        <li @click="goTo('/payroll')">
+          <i class="fas fa-chart-line"></i>
+          <span v-show="textVisible">Payroll</span>
         </li>
-        <li>
-          <router-link to="/attendance" class="nav-link">
-            <i class="fas fa-building"></i>
-            <span :style="{ visibility: isCollapsed ? 'hidden' : 'visible' }"
-              >Attendance</span
-            >
-          </router-link>
+        <li @click="goTo('/attendance')">
+          <i class="fas fa-building"></i>
+          <span v-show="textVisible">Attendance</span>
         </li>
       </ul>
     </nav>
@@ -50,11 +34,23 @@ export default {
   data() {
     return {
       isCollapsed: false,
+      textVisible: true,
     };
   },
   methods: {
     toggleSidebar() {
+      if (this.isCollapsed) {
+        setTimeout(() => {
+          this.textVisible = true;
+        }, 60);
+      } else {
+        this.textVisible = false;
+      }
+
       this.isCollapsed = !this.isCollapsed;
+    },
+    goTo(route) {
+      this.$router.push(route);
     },
   },
 };
@@ -62,11 +58,11 @@ export default {
 
 <style scoped>
 .sidebar {
-  width: 200px;
+  width: 225px;
   background-color: #ffffff;
   height: 100%;
   border-right: 1px solid #ccc;
-  transition: width 0.3s ease;
+  transition: width 0.2s ease;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -89,8 +85,6 @@ nav ul {
 nav li {
   padding: 10px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
   margin: 10px;
   border-radius: 5px;
 }
@@ -99,11 +93,8 @@ nav li:hover {
   background-color: #f0f0f0;
 }
 
-.nav-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
+nav li span {
+  display: inline-block;
 }
 
 i {
