@@ -30,6 +30,10 @@ body {
 </style>
 
 <style scoped>
+* {
+  font-family: "Assistant", sans-serif;
+}
+
 .layout {
   display: flex;
   height: 100dvh;
@@ -41,7 +45,7 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  background-color: #f5f5f5; /* Light grey background */
+  background-color: #f5f5f5;
 }
 
 .content {
