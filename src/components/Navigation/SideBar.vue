@@ -126,7 +126,7 @@ i {
 .toggle-btn {
   position: absolute;
   right: -0.75rem;
-  top: 50%;
+  top: 95%;
   width: 20px;
   height: 20px;
   background-color: #fff;
