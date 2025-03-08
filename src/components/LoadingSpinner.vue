@@ -16,9 +16,8 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  height: 100vh;
   text-align: center;
-  margin-top: 20vh;
 }
 
 .spinner {
@@ -28,6 +27,7 @@ export default {
   width: 50px;
   height: 50px;
   animation: spin 1s linear infinite;
+  margin-bottom: 45vh;
 }
 
 @keyframes spin {

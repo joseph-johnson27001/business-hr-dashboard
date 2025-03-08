@@ -131,11 +131,12 @@ i {
   height: 15px;
   background-color: #fff;
   border-radius: 50%;
-  border: 1px solid #ccc;
+  border: 1px solid #bbb;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .toggle-btn i {
