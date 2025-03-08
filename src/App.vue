@@ -4,7 +4,7 @@
     <div class="main-content">
       <SideBar />
       <div class="content">
-        <!-- This is where dynamic content will go -->
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -43,7 +43,7 @@ body {
 
 .main-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex: 1;
   background-color: #f5f5f5;
   height: 100dvh;
@@ -51,5 +51,6 @@ body {
 
 .content {
   flex: 1;
+  padding: 20px;
 }
 </style>
