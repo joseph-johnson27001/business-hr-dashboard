@@ -17,7 +17,7 @@
 
       <!-- Graph Cards -->
       <div class="graphs-container">
-        <GraphContainerCard title="Employee Growth">
+        <GraphContainerCard title="Total Employees">
           <!-- Future graph component will go here -->
         </GraphContainerCard>
         <GraphContainerCard title="Absenteeism Trends">
