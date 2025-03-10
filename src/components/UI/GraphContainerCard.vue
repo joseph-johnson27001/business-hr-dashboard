@@ -3,7 +3,11 @@
     <!-- Card Header -->
     <div class="graph-card-header">
       <div class="graph-title">{{ title }}</div>
-      <select v-model="selectedOption" class="timeframe-dropdown">
+      <select
+        v-model="selectedOption"
+        @change="onTimeframeChange"
+        class="timeframe-dropdown"
+      >
         <option v-for="option in options" :key="option" :value="option">
           {{ option }}
         </option>
@@ -32,8 +36,13 @@ export default {
   data() {
     return {
       selectedOption: "Monthly",
-      options: ["Yearly", "Monthly", "Weekly", "Daily"],
+      options: ["Daily", "Weekly", "Monthly", "Yearly"],
     };
+  },
+  methods: {
+    onTimeframeChange() {
+      this.$emit("timeframe-changed", this.selectedOption); // Emit selected option
+    },
   },
 };
 </script>
@@ -65,8 +74,10 @@ export default {
 }
 
 .timeframe-dropdown {
+  font-family: "Assistant" !important;
   border: 1px solid #ccc;
   padding: 10px;
+  padding-left: 5px;
   border-radius: 4px;
   font-size: 14px;
   background-color: #fff;

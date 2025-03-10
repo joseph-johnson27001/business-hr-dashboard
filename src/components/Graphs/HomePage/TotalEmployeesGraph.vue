@@ -27,7 +27,7 @@ ChartJS.register(
 );
 
 export default {
-  name: "TotalEmployeesChart",
+  name: "TotalEmployeesGraph",
   props: {
     labels: {
       type: Array,
@@ -56,10 +56,15 @@ export default {
     window.removeEventListener("resize", this.handleResize);
     this.destroyChart();
   },
+  watch: {
+    data() {
+      this.renderChart();
+    },
+  },
   methods: {
     renderChart() {
-      if (!this.isMounted || !this.$refs.totalEmployeesChart) return;
       this.destroyChart();
+      if (!this.isMounted || !this.$refs.totalEmployeesChart) return;
 
       this.chartInstance = new ChartJS(this.$refs.totalEmployeesChart, {
         type: "bar",

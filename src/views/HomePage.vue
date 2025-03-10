@@ -17,11 +17,14 @@
 
       <!-- Graph Cards -->
       <div class="graphs-container">
-        <GraphContainerCard title="Total Employees">
+        <GraphContainerCard
+          title="Total Employees"
+          @timeframe-changed="onTimeframeChanged"
+        >
           <TotalEmployeesGraph
             v-if="graphData.totalEmployees"
-            :labels="graphData.totalEmployees.monthly.labels"
-            :data="graphData.totalEmployees.monthly.data"
+            :labels="graphData.totalEmployees[selectedTimeframe].labels"
+            :data="graphData.totalEmployees[selectedTimeframe].data"
           />
         </GraphContainerCard>
         <GraphContainerCard title="Absenteeism Trends">
@@ -56,6 +59,7 @@ export default {
   data() {
     return {
       isLoading: true,
+      selectedTimeframe: "monthly", // Default value for timeframe
       kpis: [
         {
           icon: "fas fa-users",
@@ -109,6 +113,11 @@ export default {
         this.isLoading = false;
       }
     );
+  },
+  methods: {
+    onTimeframeChanged(newTimeframe) {
+      this.selectedTimeframe = newTimeframe.toLowerCase(); // Update the selected timeframe
+    },
   },
 };
 </script>
