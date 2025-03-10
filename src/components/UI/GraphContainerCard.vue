@@ -6,6 +6,7 @@
       <select
         v-model="selectedOption"
         @change="onTimeframeChange"
+        :disabled="isDropdownDisabled"
         class="timeframe-dropdown"
       >
         <option v-for="option in options" :key="option" :value="option">
@@ -17,7 +18,6 @@
     <!-- Divider -->
     <!-- <hr class="divider" /> -->
 
-    <!-- Graph Slot (to be filled later) -->
     <div class="graph-content">
       <slot></slot>
     </div>
@@ -37,11 +37,16 @@ export default {
     return {
       selectedOption: "Monthly",
       options: ["Daily", "Weekly", "Monthly", "Yearly"],
+      isDropdownDisabled: false,
     };
   },
   methods: {
     onTimeframeChange() {
-      this.$emit("timeframe-changed", this.selectedOption); // Emit selected option
+      this.isDropdownDisabled = true;
+      this.$emit("timeframe-changed", this.selectedOption);
+      setTimeout(() => {
+        this.isDropdownDisabled = false;
+      }, 750);
     },
   },
 };
