@@ -18,7 +18,7 @@
       <!-- Graph Cards -->
       <div class="graphs-container">
         <GraphContainerCard title="Total Employees">
-          <!-- Future graph component will go here -->
+          <TotalEmployeesGraph />
         </GraphContainerCard>
         <GraphContainerCard title="Absenteeism Trends">
           <!-- Future graph component will go here -->
@@ -38,6 +38,7 @@
 import KPICard from "@/components/UI/KPICard.vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
+import TotalEmployeesGraph from "@/components/Graphs/HomePage/TotalEmployeesGraph.vue";
 import { fetchKPIData } from "@/api/homepage.js";
 
 export default {
@@ -46,6 +47,7 @@ export default {
     KPICard,
     LoadingSpinner,
     GraphContainerCard,
+    TotalEmployeesGraph,
   },
   data() {
     return {

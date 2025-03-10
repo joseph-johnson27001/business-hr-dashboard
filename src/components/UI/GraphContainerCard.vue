@@ -11,7 +11,7 @@
     </div>
 
     <!-- Divider -->
-    <hr class="divider" />
+    <!-- <hr class="divider" /> -->
 
     <!-- Graph Slot (to be filled later) -->
     <div class="graph-content">
