@@ -27,8 +27,16 @@
             :data="graphData.totalEmployees[selectedTimeframe].data"
           />
         </GraphContainerCard>
-        <GraphContainerCard title="Absenteeism Trends">
-          <!-- Future graph component will go here -->
+        <GraphContainerCard
+          title="Employee Satisfaction"
+          graphName="employeeSatisfaction"
+          @timeframe-changed="onTimeframeChanged"
+        >
+          <EmployeeSatisfactionGraph
+            v-if="graphData.employeeSatisfaction"
+            :labels="graphData.employeeSatisfaction[selectedTimeframe].labels"
+            :data="graphData.employeeSatisfaction[selectedTimeframe].data"
+          />
         </GraphContainerCard>
         <GraphContainerCard title="Hiring vs Attrition Rate">
           <!-- Future graph component will go here -->
@@ -46,6 +54,7 @@ import KPICard from "@/components/UI/KPICard.vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
 import TotalEmployeesGraph from "@/components/Graphs/HomePage/TotalEmployeesGraph.vue";
+import EmployeeSatisfactionGraph from "@/components/Graphs/HomePage/EmployeeSatisfactionGraph.vue";
 import { fetchKPIData, fetchGraphData } from "@/api/homePage.js";
 
 export default {
@@ -55,6 +64,7 @@ export default {
     LoadingSpinner,
     GraphContainerCard,
     TotalEmployeesGraph,
+    EmployeeSatisfactionGraph,
   },
   data() {
     return {

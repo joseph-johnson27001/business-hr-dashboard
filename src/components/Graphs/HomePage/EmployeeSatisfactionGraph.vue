@@ -1,24 +1,26 @@
 <template>
   <div class="chart-container">
-    <canvas ref="totalEmployeesChart"></canvas>
+    <canvas ref="satisfactionChart"></canvas>
   </div>
 </template>
 
 <script>
 import {
   Chart as ChartJS,
-  BarElement,
+  LineElement,
+  PointElement,
   CategoryScale,
   LinearScale,
   Title,
   Tooltip,
   Legend,
-  BarController,
+  LineController,
 } from "chart.js";
 
 ChartJS.register(
-  BarController,
-  BarElement,
+  LineController,
+  LineElement,
+  PointElement,
   CategoryScale,
   LinearScale,
   Title,
@@ -27,7 +29,7 @@ ChartJS.register(
 );
 
 export default {
-  name: "TotalEmployeesGraph",
+  name: "SatisfactionGraph",
   props: {
     labels: {
       type: Array,
@@ -55,25 +57,36 @@ export default {
     this.destroyChart();
   },
   watch: {
-    data() {
-      this.renderChart();
+    // Watch for changes to data and labels
+    data(newData) {
+      this.renderChart(newData);
     },
   },
   methods: {
-    renderChart() {
+    renderChart(newData) {
+      // If the component is not mounted or the chart reference is invalid, return early
+      if (!this.isMounted || !this.$refs.satisfactionChart) return;
+
+      // Destroy the previous chart to avoid duplicates
       this.destroyChart();
-      if (!this.isMounted || !this.$refs.totalEmployeesChart) return;
-      this.chartInstance = new ChartJS(this.$refs.totalEmployeesChart, {
-        type: "bar",
+
+      // Create a new chart with the updated data
+      this.chartInstance = new ChartJS(this.$refs.satisfactionChart, {
+        type: "line",
         data: {
           labels: this.labels,
           datasets: [
             {
-              label: "Number of Employees",
-              data: this.data,
-              backgroundColor: "rgba(2, 136, 209, 0.2)",
-              borderColor: "rgba(2, 136, 209)",
-              borderWidth: 1,
+              label: "Employee Satisfaction (%)",
+              data: newData || this.data,
+              fill: false,
+              borderColor: "#0288d1",
+              tension: 0.2,
+              borderWidth: 2,
+              pointBackgroundColor: "#0288d1",
+              pointBorderColor: "#fff",
+              pointBorderWidth: 2,
+              pointRadius: 5,
             },
           ],
         },
@@ -82,18 +95,28 @@ export default {
           maintainAspectRatio: false,
           scales: {
             x: { grid: { display: false } },
-            y: { grid: { display: true } },
+            y: {
+              grid: { display: true },
+              max: 100,
+              ticks: { stepSize: 5 },
+            },
           },
           plugins: {
             title: { display: false },
             legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: (tooltipItem) => `${tooltipItem.raw}%`,
+              },
+            },
           },
         },
       });
     },
     destroyChart() {
-      if (this.chartInstance && this.isMounted) {
+      if (this.chartInstance) {
         this.chartInstance.destroy();
+        this.chartInstance = null;
       }
     },
   },
