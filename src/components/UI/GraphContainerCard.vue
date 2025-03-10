@@ -40,6 +40,15 @@ export default {
       isDropdownDisabled: false,
     };
   },
+  mounted() {
+    // Disable the dropdown on mount
+    this.isDropdownDisabled = true;
+
+    // Re-enable the dropdown after 750ms
+    setTimeout(() => {
+      this.isDropdownDisabled = false;
+    }, 750);
+  },
   methods: {
     onTimeframeChange() {
       this.isDropdownDisabled = true;
