@@ -17,17 +17,21 @@
 
       <!-- Graph Cards -->
       <div class="graphs-container">
-        <!-- Total Employees Graph -->
+        <!-- Employee Performance Graph -->
         <GraphContainerCard
-          title="Total Employees"
+          title="Employee Performance"
           @timeframe-changed="onTimeframeChanged"
         >
-          <TotalEmployeesGraph
-            v-if="graphData.totalEmployees"
+          <EmployeePerformanceGraph
+            v-if="graphData.employeePerformance"
             :labels="
-              graphData.totalEmployees[timeframes['Total Employees']].labels
+              graphData.employeePerformance[timeframes['Employee Performance']]
+                .labels
             "
-            :data="graphData.totalEmployees[timeframes['Total Employees']].data"
+            :data="
+              graphData.employeePerformance[timeframes['Employee Performance']]
+                .data
+            "
           />
         </GraphContainerCard>
 
@@ -68,9 +72,18 @@
           />
         </GraphContainerCard>
 
-        <!-- Future Graph (Placeholder) -->
-        <GraphContainerCard title="Future Graph">
-          <!-- Future graph component will go here -->
+        <!-- Total Employees Graph -->
+        <GraphContainerCard
+          title="Total Employees"
+          @timeframe-changed="onTimeframeChanged"
+        >
+          <TotalEmployeesGraph
+            v-if="graphData.totalEmployees"
+            :labels="
+              graphData.totalEmployees[timeframes['Total Employees']].labels
+            "
+            :data="graphData.totalEmployees[timeframes['Total Employees']].data"
+          />
         </GraphContainerCard>
       </div>
     </div>
@@ -84,6 +97,7 @@ import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
 import TotalEmployeesGraph from "@/components/Graphs/HomePage/TotalEmployeesGraph.vue";
 import SalaryExpenditureGraph from "@/components/Graphs/HomePage/SalaryExpenditureGraph.vue";
 import EmployeeSatisfactionGraph from "@/components/Graphs/HomePage/EmployeeSatisfactionGraph.vue";
+import EmployeePerformanceGraph from "@/components/Graphs/HomePage/EmployeePerformanceGraph.vue";
 import { fetchKPIData, fetchGraphData } from "@/api/homePage.js";
 
 export default {
@@ -95,6 +109,7 @@ export default {
     TotalEmployeesGraph,
     EmployeeSatisfactionGraph,
     SalaryExpenditureGraph,
+    EmployeePerformanceGraph,
   },
   data() {
     return {
@@ -142,6 +157,7 @@ export default {
         "Total Employees": "monthly",
         "Employee Satisfaction": "monthly",
         "Salary Expenditure": "monthly",
+        "Employee Performance": "monthly",
       },
     };
   },
@@ -156,8 +172,6 @@ export default {
         }));
         // Assigning graph data
         this.graphData = graphData;
-        console.log("graph daata", graphData);
-        // Set loading state to false once data is fetched
         this.isLoading = false;
       }
     );

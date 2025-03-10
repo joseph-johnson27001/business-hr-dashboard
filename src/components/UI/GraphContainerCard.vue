@@ -41,10 +41,8 @@ export default {
     };
   },
   mounted() {
-    // Disable the dropdown on mount
     this.isDropdownDisabled = true;
 
-    // Re-enable the dropdown after 750ms
     setTimeout(() => {
       this.isDropdownDisabled = false;
     }, 750);
@@ -102,12 +100,14 @@ export default {
   outline: none;
 }
 
+/*  
 .divider {
   margin: 15px 0;
   width: 100%;
   border: 0;
   border-top: 1px solid #ddd;
 }
+*/
 
 .graph-content {
   display: flex;
