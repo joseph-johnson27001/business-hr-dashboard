@@ -1,0 +1,19 @@
+{
+  "totalEmployees": {
+    "labels": [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ],
+    "data": [50, 55, 50, 55, 60, 55, 60, 65, 65, 70, 85, 70]
+  }
+}

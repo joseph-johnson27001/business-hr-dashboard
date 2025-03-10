@@ -28,52 +28,47 @@ ChartJS.register(
 
 export default {
   name: "TotalEmployeesChart",
+  props: {
+    labels: {
+      type: Array,
+      required: true,
+    },
+    data: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
       chartInstance: null,
-      isMounted: false, // Track mount state
+      isMounted: false,
     };
   },
   mounted() {
-    this.isMounted = true; // Set flag when component is mounted
+    this.isMounted = true;
     this.$nextTick(() => {
       this.renderChart();
       window.addEventListener("resize", this.handleResize);
     });
   },
   beforeUnmount() {
-    this.isMounted = false; // Set flag when component is unmounted
+    this.isMounted = false;
     window.removeEventListener("resize", this.handleResize);
     this.destroyChart();
   },
   methods: {
     renderChart() {
-      // Prevent chart rendering if the component is not mounted or canvas reference is null
       if (!this.isMounted || !this.$refs.totalEmployeesChart) return;
-
-      this.destroyChart(); // Prevents duplicate charts
+      this.destroyChart();
 
       this.chartInstance = new ChartJS(this.$refs.totalEmployeesChart, {
         type: "bar",
         data: {
-          labels: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
+          labels: this.labels,
           datasets: [
             {
               label: "Number of Employees",
-              data: [50, 55, 50, 55, 60, 55, 60, 65, 65, 70, 85, 70],
+              data: this.data,
               backgroundColor: "rgba(2, 136, 209, 0.2)",
               borderColor: "rgba(2, 136, 209)",
               borderWidth: 1,
@@ -99,17 +94,13 @@ export default {
         },
       });
     },
-
     destroyChart() {
-      // Ensure chart instance is valid before attempting to destroy
       if (this.chartInstance && this.isMounted) {
         this.chartInstance.destroy();
         this.chartInstance = null;
       }
     },
-
     handleResize() {
-      // Ensure resize is triggered only if the chart instance is valid and the component is mounted
       if (this.chartInstance && this.isMounted) {
         requestAnimationFrame(() => {
           if (this.chartInstance) this.chartInstance.resize();
@@ -125,6 +116,7 @@ export default {
   width: 100%;
   height: 100%;
   min-height: 250px;
+  max-height: 300px;
 }
 canvas {
   width: 100% !important;

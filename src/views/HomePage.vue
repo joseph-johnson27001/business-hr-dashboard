@@ -2,8 +2,8 @@
   <div class="home-page">
     <LoadingSpinner v-if="isLoading" />
 
-    <!-- KPI Cards -->
     <div v-else>
+      <!-- KPI Cards -->
       <div class="kpi-container">
         <KPICard
           v-for="(kpi, index) in kpis"
@@ -18,7 +18,11 @@
       <!-- Graph Cards -->
       <div class="graphs-container">
         <GraphContainerCard title="Total Employees">
-          <TotalEmployeesGraph />
+          <TotalEmployeesGraph
+            v-if="graphData.totalEmployees"
+            :labels="graphData.totalEmployees.labels"
+            :data="graphData.totalEmployees.data"
+          />
         </GraphContainerCard>
         <GraphContainerCard title="Absenteeism Trends">
           <!-- Future graph component will go here -->
@@ -39,7 +43,7 @@ import KPICard from "@/components/UI/KPICard.vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
 import TotalEmployeesGraph from "@/components/Graphs/HomePage/TotalEmployeesGraph.vue";
-import { fetchKPIData } from "@/api/homepage.js";
+import { fetchKPIData, fetchGraphData } from "@/api/homePage.js";
 
 export default {
   name: "HomePage",
@@ -90,16 +94,20 @@ export default {
           key: "retentionRate",
         },
       ],
+      graphData: {},
     };
   },
   created() {
-    fetchKPIData().then((data) => {
-      this.kpis = this.kpis.map((kpi) => ({
-        ...kpi,
-        stat: data[kpi.key],
-      }));
-      this.isLoading = false;
-    });
+    Promise.all([fetchKPIData(), fetchGraphData()]).then(
+      ([kpiData, graphData]) => {
+        this.kpis = this.kpis.map((kpi) => ({
+          ...kpi,
+          stat: kpiData[kpi.key],
+        }));
+        this.graphData = graphData;
+        this.isLoading = false;
+      }
+    );
   },
 };
 </script>
