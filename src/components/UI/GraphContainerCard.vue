@@ -43,7 +43,10 @@ export default {
   methods: {
     onTimeframeChange() {
       this.isDropdownDisabled = true;
-      this.$emit("timeframe-changed", this.selectedOption);
+      this.$emit("timeframe-changed", {
+        title: this.title,
+        selectedOption: this.selectedOption,
+      });
       setTimeout(() => {
         this.isDropdownDisabled = false;
       }, 750);

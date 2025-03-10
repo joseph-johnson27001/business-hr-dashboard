@@ -61,7 +61,9 @@ export default {
   },
   methods: {
     renderChart() {
-      this.destroyChart();
+      if (this.chartInstance) {
+        this.destroyChart();
+      }
       if (!this.isMounted || !this.$refs.totalEmployeesChart) return;
       this.chartInstance = new ChartJS(this.$refs.totalEmployeesChart, {
         type: "bar",
@@ -71,7 +73,7 @@ export default {
             {
               label: "Number of Employees",
               data: this.data,
-              backgroundColor: "rgba(2, 136, 209, 0.2)",
+              backgroundColor: "rgb(204,231,246)",
               borderColor: "rgba(2, 136, 209)",
               borderWidth: 1,
             },

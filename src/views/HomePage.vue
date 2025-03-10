@@ -23,19 +23,28 @@
         >
           <TotalEmployeesGraph
             v-if="graphData.totalEmployees"
-            :labels="graphData.totalEmployees[selectedTimeframe].labels"
-            :data="graphData.totalEmployees[selectedTimeframe].data"
+            :labels="
+              graphData.totalEmployees[timeframes['Total Employees']].labels
+            "
+            :data="graphData.totalEmployees[timeframes['Total Employees']].data"
           />
         </GraphContainerCard>
         <GraphContainerCard
           title="Employee Satisfaction"
-          graphName="employeeSatisfaction"
           @timeframe-changed="onTimeframeChanged"
         >
           <EmployeeSatisfactionGraph
             v-if="graphData.employeeSatisfaction"
-            :labels="graphData.employeeSatisfaction[selectedTimeframe].labels"
-            :data="graphData.employeeSatisfaction[selectedTimeframe].data"
+            :labels="
+              graphData.employeeSatisfaction[
+                timeframes['Employee Satisfaction']
+              ].labels
+            "
+            :data="
+              graphData.employeeSatisfaction[
+                timeframes['Employee Satisfaction']
+              ].data
+            "
           />
         </GraphContainerCard>
         <GraphContainerCard title="Hiring vs Attrition Rate">
@@ -69,7 +78,6 @@ export default {
   data() {
     return {
       isLoading: true,
-      selectedTimeframe: "monthly", // Default value for timeframe
       kpis: [
         {
           icon: "fas fa-users",
@@ -109,6 +117,11 @@ export default {
         },
       ],
       graphData: {},
+      // Object to store the selected timeframe for each graph
+      timeframes: {
+        "Total Employees": "monthly",
+        "Employee Satisfaction": "monthly",
+      },
     };
   },
   created() {
@@ -125,8 +138,8 @@ export default {
     );
   },
   methods: {
-    onTimeframeChanged(newTimeframe) {
-      this.selectedTimeframe = newTimeframe.toLowerCase(); // Update the selected timeframe
+    onTimeframeChanged({ title, selectedOption }) {
+      this.timeframes[title] = selectedOption.toLowerCase();
     },
   },
 };
