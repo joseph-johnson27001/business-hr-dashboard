@@ -17,6 +17,7 @@
 
       <!-- Graph Cards -->
       <div class="graphs-container">
+        <!-- Total Employees Graph -->
         <GraphContainerCard
           title="Total Employees"
           @timeframe-changed="onTimeframeChanged"
@@ -29,6 +30,8 @@
             :data="graphData.totalEmployees[timeframes['Total Employees']].data"
           />
         </GraphContainerCard>
+
+        <!-- Employee Satisfaction Graph -->
         <GraphContainerCard
           title="Employee Satisfaction"
           @timeframe-changed="onTimeframeChanged"
@@ -47,10 +50,26 @@
             "
           />
         </GraphContainerCard>
-        <GraphContainerCard title="Hiring vs Attrition Rate">
-          <!-- Future graph component will go here -->
+
+        <!-- Salary Expenditure Graph -->
+        <GraphContainerCard
+          title="Salary Expenditure"
+          @timeframe-changed="onTimeframeChanged"
+        >
+          <SalaryExpenditureGraph
+            v-if="graphData.salaryExpenditure"
+            :labels="
+              graphData.salaryExpenditure[timeframes['Salary Expenditure']]
+                .labels
+            "
+            :data="
+              graphData.salaryExpenditure[timeframes['Salary Expenditure']].data
+            "
+          />
         </GraphContainerCard>
-        <GraphContainerCard title="Employee Satisfaction">
+
+        <!-- Future Graph (Placeholder) -->
+        <GraphContainerCard title="Future Graph">
           <!-- Future graph component will go here -->
         </GraphContainerCard>
       </div>
@@ -63,6 +82,7 @@ import KPICard from "@/components/UI/KPICard.vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
 import TotalEmployeesGraph from "@/components/Graphs/HomePage/TotalEmployeesGraph.vue";
+import SalaryExpenditureGraph from "@/components/Graphs/HomePage/SalaryExpenditureGraph.vue";
 import EmployeeSatisfactionGraph from "@/components/Graphs/HomePage/EmployeeSatisfactionGraph.vue";
 import { fetchKPIData, fetchGraphData } from "@/api/homePage.js";
 
@@ -74,6 +94,7 @@ export default {
     GraphContainerCard,
     TotalEmployeesGraph,
     EmployeeSatisfactionGraph,
+    SalaryExpenditureGraph,
   },
   data() {
     return {
@@ -117,10 +138,10 @@ export default {
         },
       ],
       graphData: {},
-      // Object to store the selected timeframe for each graph
       timeframes: {
         "Total Employees": "monthly",
         "Employee Satisfaction": "monthly",
+        "Salary Expenditure": "monthly",
       },
     };
   },
@@ -128,16 +149,21 @@ export default {
     // Fetching KPI data and graph data in parallel
     Promise.all([fetchKPIData(), fetchGraphData()]).then(
       ([kpiData, graphData]) => {
+        // Assigning KPI stats to their respective KPIs
         this.kpis = this.kpis.map((kpi) => ({
           ...kpi,
           stat: kpiData[kpi.key],
         }));
+        // Assigning graph data
         this.graphData = graphData;
+        console.log("graph daata", graphData);
+        // Set loading state to false once data is fetched
         this.isLoading = false;
       }
     );
   },
   methods: {
+    // Handle timeframe changes for each graph
     onTimeframeChanged({ title, selectedOption }) {
       this.timeframes[title] = selectedOption.toLowerCase();
     },
