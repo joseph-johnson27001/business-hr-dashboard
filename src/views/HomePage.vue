@@ -20,8 +20,8 @@
         <GraphContainerCard title="Total Employees">
           <TotalEmployeesGraph
             v-if="graphData.totalEmployees"
-            :labels="graphData.totalEmployees.labels"
-            :data="graphData.totalEmployees.data"
+            :labels="graphData.totalEmployees.monthly.labels"
+            :data="graphData.totalEmployees.monthly.data"
           />
         </GraphContainerCard>
         <GraphContainerCard title="Absenteeism Trends">
@@ -98,6 +98,7 @@ export default {
     };
   },
   created() {
+    // Fetching KPI data and graph data in parallel
     Promise.all([fetchKPIData(), fetchGraphData()]).then(
       ([kpiData, graphData]) => {
         this.kpis = this.kpis.map((kpi) => ({

@@ -1,19 +1,33 @@
 {
   "totalEmployees": {
-    "labels": [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec"
-    ],
-    "data": [50, 55, 50, 55, 60, 55, 60, 65, 65, 70, 85, 70]
+    "yearly": {
+      "labels": ["2020", "2021", "2022", "2023", "2024"],
+      "data": [500, 550, 600, 650, 700]
+    },
+    "monthly": {
+      "labels": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ],
+      "data": [50, 55, 50, 55, 60, 55, 60, 65, 65, 70, 85, 70]
+    },
+    "weekly": {
+      "labels": ["Week 1", "Week 2", "Week 3", "Week 4"],
+      "data": [10, 12, 15, 18]
+    },
+    "daily": {
+      "labels": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      "data": [2, 3, 1, 5, 4, 2, 1]
+    }
   }
 }
