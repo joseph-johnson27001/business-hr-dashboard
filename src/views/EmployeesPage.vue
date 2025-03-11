@@ -39,14 +39,14 @@
           @timeframe-changed="onTimeframeChanged"
         >
           <EmployeeNetPromoterScoreGraph
-            v-if="employeeNetPromoterScoreData"
+            v-if="graphData.employeeNetPromoterScore"
             :labels="
-              employeeNetPromoterScoreData[
+              graphData.employeeNetPromoterScore[
                 timeframes['Employee Net Promoter Score']
               ]?.labels
             "
             :data="
-              employeeNetPromoterScoreData[
+              graphData.employeeNetPromoterScore[
                 timeframes['Employee Net Promoter Score']
               ]?.data
             "
@@ -72,6 +72,24 @@
             "
           />
         </GraphContainerCard>
+
+        <!-- Employee Performance Graph -->
+        <GraphContainerCard
+          title="Employee Performance"
+          @timeframe-changed="onTimeframeChanged"
+        >
+          <EmployeePerformanceGraph
+            v-if="graphData.employeePerformance"
+            :labels="
+              graphData.employeePerformance[timeframes['Employee Performance']]
+                .labels
+            "
+            :data="
+              graphData.employeePerformance[timeframes['Employee Performance']]
+                .data
+            "
+          />
+        </GraphContainerCard>
       </div>
     </div>
   </div>
@@ -80,6 +98,7 @@
 <script>
 import InfoCard from "@/components/UI/InfoCard.vue";
 import TotalEmployeesGraph from "@/components/Graphs/EmployeesPage/TotalEmployeesGraph.vue";
+import EmployeePerformanceGraph from "@/components/Graphs/EmployeesPage/EmployeePerformanceGraph.vue";
 import EmployeeSatisfactionGraph from "@/components/Graphs/EmployeesPage/EmployeeSatisfactionGraph.vue";
 import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
 import EmployeeNetPromoterScoreGraph from "@/components/Graphs/EmployeesPage/EmployeeNetPromoterScoreGraph.vue";
@@ -102,27 +121,18 @@ export default {
     TotalEmployeesGraph,
     EmployeeNetPromoterScoreGraph,
     EmployeeSatisfactionGraph,
+    EmployeePerformanceGraph,
   },
 
   created() {
     Promise.all([fetchTableData(), fetchEmployeeKPIs(), fetchGraphData()])
       .then(([employeeData, kpiData, graphData]) => {
-        // Assign employee data to employees
         this.employees = employeeData.employees;
-
-        // Map KPI data to the KPI cards
         this.employeeKPIs = this.employeeKPIs.map((kpi, index) => ({
           ...kpi,
           stat: kpiData[index]?.stat || 0,
         }));
-
-        // Assign the graph data for the various graphs
         this.graphData = graphData;
-
-        // Extract specific graph data for Employee Net Promoter Score
-        this.employeeNetPromoterScoreData = graphData.employeeNetPromoterScore;
-
-        // Once the data is loaded, set loading to false
         this.isLoading = false;
       })
       .catch((error) => {
@@ -138,6 +148,7 @@ export default {
         "Total Employees": "monthly",
         "Employee Net Promoter Score": "monthly",
         "Employee Satisfaction": "monthly",
+        "Employee Performance": "monthly",
       },
       employees: [],
       graphData: {},
