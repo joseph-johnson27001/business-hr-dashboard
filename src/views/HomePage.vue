@@ -92,7 +92,7 @@
 
 <script>
 import KPICard from "@/components/UI/KPICard.vue";
-import LoadingSpinner from "@/components/LoadingSpinner.vue";
+import LoadingSpinner from "@/components/UI/LoadingSpinner.vue";
 import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
 import TotalEmployeesGraph from "@/components/Graphs/HomePage/TotalEmployeesGraph.vue";
 import SalaryExpenditureGraph from "@/components/Graphs/HomePage/SalaryExpenditureGraph.vue";
