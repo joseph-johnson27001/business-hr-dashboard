@@ -6,7 +6,7 @@
       <div class="search-container">
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="Search"
           v-model="searchQuery"
           @input="handleSearch"
           class="search-input"

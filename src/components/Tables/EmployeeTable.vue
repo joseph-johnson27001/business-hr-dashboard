@@ -237,7 +237,33 @@ export default {
 }
 
 .search-input {
+  height: 25px;
   width: 100%;
+  padding: 5px 10px;
+  border: 1px solid #bbb;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 10px;
+  background-color: #fefefe;
+  font-family: "Assistant";
+  outline: none;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #01a9f2;
+}
+
+.department-filter {
+  font-family: "Assistant" !important;
+  border: 1px solid #bbb;
+
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+  cursor: pointer;
+  outline: none;
 }
 
 .employee-card {

@@ -39,8 +39,8 @@ export default {
 .info-card-title {
   font-size: 14px;
   font-weight: 400;
-  padding-bottom: 10px;
-  color: #0f3659;
+  color: #006ba6;
+  text-align: left;
 }
 
 @media (max-width: 400px) {
