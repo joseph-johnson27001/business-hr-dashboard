@@ -36,6 +36,19 @@
           title="Employee Net Promoter Score"
           @timeframe-changed="onTimeframeChanged"
         >
+          <EmployeeNetPromoterScoreGraph
+            v-if="employeeNetPromoterScoreData"
+            :labels="
+              employeeNetPromoterScoreData[
+                timeframes['Employee Net Promoter Score']
+              ]?.labels
+            "
+            :data="
+              employeeNetPromoterScoreData[
+                timeframes['Employee Net Promoter Score']
+              ]?.data
+            "
+          />
         </GraphContainerCard>
       </div>
     </div>
@@ -46,6 +59,7 @@
 import InfoCard from "@/components/UI/InfoCard.vue";
 import TotalEmployeesGraph from "@/components/Graphs/EmployeesPage/TotalEmployeesGraph.vue";
 import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
+import EmployeeNetPromoterScoreGraph from "@/components/Graphs/EmployeesPage/EmployeeNetPromoterScoreGraph.vue";
 import EmployeeTable from "@/components/Tables/EmployeeTable.vue";
 import {
   fetchTableData,
@@ -63,13 +77,14 @@ export default {
     KPICard,
     GraphContainerCard,
     TotalEmployeesGraph,
+    EmployeeNetPromoterScoreGraph,
   },
 
   created() {
     Promise.all([fetchTableData(), fetchEmployeeKPIs(), fetchGraphData()])
       .then(([employeeData, kpiData, graphData]) => {
-        console.log(graphData);
         this.graphData = graphData;
+        this.employeeNetPromoterScoreData = graphData.employeeNetPromoterScore; // Extract Employee Net Promoter Score data
         this.employees = employeeData.employees;
         this.employeeKPIs = this.employeeKPIs.map((kpi, index) => ({
           ...kpi,
@@ -89,6 +104,7 @@ export default {
       isLoading: true,
       timeframes: {
         "Total Employees": "monthly",
+        "Employee Net Promoter Score": "monthly",
       },
 
       employees: [],
