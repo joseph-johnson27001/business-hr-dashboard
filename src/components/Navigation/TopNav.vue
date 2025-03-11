@@ -53,8 +53,7 @@ export default {
 .heading {
   font-family: "Unica One", sans-serif;
   font-weight: 500;
-  font-size: 1.4rem;
-  color: #333;
+  font-size: 1.3rem;
 }
 
 .search-container {

@@ -43,6 +43,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 5px;
 }
 
 .info-card-title {
