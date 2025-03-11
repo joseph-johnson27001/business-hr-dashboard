@@ -14,7 +14,7 @@
       </div>
       <i class="fas fa-bell notification-icon"></i>
       <img
-        src="https://via.placeholder.com/40"
+        src="images/ProfilePhoto2.jpg"
         alt="User Profile"
         class="profile-image"
       />

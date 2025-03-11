@@ -15,7 +15,6 @@ import EmployeeTable from "@/components/Tables/EmployeeTable.vue";
 export default {
   components: {
     InfoCard,
-
     EmployeeTable,
   },
 
