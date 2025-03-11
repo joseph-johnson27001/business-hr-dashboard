@@ -118,7 +118,7 @@ export default {
       searchQuery: "",
       selectedDepartment: "",
       currentPage: 1,
-      itemsPerPage: 10,
+      itemsPerPage: 5,
       isMobile: window.innerWidth < 768,
     };
   },
@@ -355,6 +355,7 @@ export default {
 
   .search-input {
     width: auto;
+    margin-right: 0px;
   }
 }
 

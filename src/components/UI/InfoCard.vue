@@ -27,7 +27,7 @@ export default {
   border-radius: 5px;
   padding: 20px;
   border: 1px solid #ccc;
-  box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: column;
   font-family: "Roboto";

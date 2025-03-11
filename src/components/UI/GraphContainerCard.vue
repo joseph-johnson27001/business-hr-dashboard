@@ -53,13 +53,14 @@ export default {
 .graph-card {
   background-color: #fff;
   border-radius: 5px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   width: 100%;
   display: flex;
   flex-direction: column;
   padding: 20px;
   box-sizing: border-box;
   font-family: "Roboto";
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
 .graph-card-header {

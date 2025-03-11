@@ -51,8 +51,10 @@ export default {
 }
 
 .heading {
-  font-family: "Roboto";
-  font-size: 1rem;
+  font-family: "Unica One", sans-serif;
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: #333;
 }
 
 .search-container {

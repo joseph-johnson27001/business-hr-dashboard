@@ -46,11 +46,12 @@ export default {
 .kpi-card {
   background-color: #fff;
   border-radius: 5px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   padding: 20px;
   display: flex;
   font-family: "Roboto";
   flex-direction: column;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
 .kpi-card-top {

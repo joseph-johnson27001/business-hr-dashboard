@@ -57,7 +57,7 @@ body {
 
 .content {
   flex: 1;
-  padding: 10px;
+  padding: 15px;
   overflow-y: scroll;
 }
 </style>
