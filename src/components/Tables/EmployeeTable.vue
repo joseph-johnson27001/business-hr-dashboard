@@ -219,8 +219,9 @@ export default {
 }
 
 .employee-table th {
-  background-color: #0288d1;
+  background-color: #1976d2;
   color: white;
+  font-weight: 400;
 }
 
 .employee-table tbody tr:hover {

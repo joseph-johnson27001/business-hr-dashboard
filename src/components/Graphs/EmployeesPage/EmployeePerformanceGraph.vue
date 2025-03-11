@@ -1,6 +1,6 @@
 <template>
   <div class="chart-container">
-    <canvas ref="satisfactionChart"></canvas>
+    <canvas ref="employeePerformanceChart"></canvas>
   </div>
 </template>
 
@@ -30,7 +30,7 @@ ChartJS.register(
 );
 
 export default {
-  name: "SatisfactionGraph",
+  name: "EmployeePerformanceGraph",
   props: {
     labels: {
       type: Array,
@@ -67,26 +67,20 @@ export default {
   },
   methods: {
     renderChart(newData) {
-      // If the component is not mounted or the chart reference is invalid, return early
-      if (!this.isMounted || !this.$refs.satisfactionChart) return;
-
-      // Destroy the previous chart to avoid duplicates
       this.destroyChart();
-
-      // Create a new chart with the updated data
-      this.chartInstance = new ChartJS(this.$refs.satisfactionChart, {
+      this.chartInstance = new ChartJS(this.$refs.employeePerformanceChart, {
         type: "line",
         data: {
           labels: this.labels,
           datasets: [
             {
-              label: "Employee Satisfaction (%)",
+              label: "Employee Performance (%)",
               data: newData || this.data,
               fill: false,
-              borderColor: "#9966ff",
-              tension: 0.2,
+              borderColor: "#0288d1",
+              tension: 0.3,
               borderWidth: 2,
-              pointBackgroundColor: "#9966ff",
+              pointBackgroundColor: "#0288d1",
               pointBorderColor: "#fff",
               pointBorderWidth: 2,
               pointRadius: 5,
@@ -100,8 +94,11 @@ export default {
             x: { grid: { display: false } },
             y: {
               grid: { display: true },
-              max: 100,
-              ticks: { stepSize: 5 },
+              ticks: {
+                callback: function (value) {
+                  return value + "%";
+                },
+              },
             },
           },
           plugins: {
