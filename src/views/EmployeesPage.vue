@@ -10,7 +10,7 @@
           :icon="kpi.icon"
           :stat="kpi.stat"
           :title="kpi.title"
-          :gradient="kpi.gradient"
+          :color="kpi.color"
         />
       </div>
       <div class="table-container">
@@ -25,9 +25,9 @@
 <script>
 import InfoCard from "@/components/UI/InfoCard.vue";
 import EmployeeTable from "@/components/Tables/EmployeeTable.vue";
-import { fetchTableData, fetchEmployeeKPIs } from "@/api/employeePage.js"; // Make sure to define fetchEmployeeKPIs in API
+import { fetchTableData, fetchEmployeeKPIs } from "@/api/employeePage.js";
 import LoadingSpinner from "@/components/UI/LoadingSpinner.vue";
-import KPICard from "@/components/UI/KPICard.vue"; // Import the KPICard component
+import KPICard from "@/components/UI/KPICard.vue";
 
 export default {
   components: {
@@ -62,61 +62,61 @@ export default {
         {
           icon: "fas fa-users",
           title: "Total Employees",
-          gradient: "linear-gradient(to right, #ff7043, #ff8a65)",
+          color: "#1976d2",
           stat: 0,
         },
         {
           icon: "fas fa-user-plus",
           title: "New Hires",
-          gradient: "linear-gradient(to right, #66bb6a, #81c784)",
+          color: "#388e3c",
           stat: 0,
         },
         {
           icon: "fas fa-user-times",
           title: "Employees Absent",
-          gradient: "linear-gradient(to right, #f06292, #f48fb1)",
+          color: "#f44336",
           stat: 0,
         },
         {
           icon: "fas fa-smile",
           title: "Employee Satisfaction",
-          gradient: "linear-gradient(to right, #64b5f6, #81d4fa)",
+          color: "#0288d1",
           stat: 0,
         },
         {
           icon: "fas fa-briefcase",
           title: "Open Positions",
-          gradient: "linear-gradient(to right, #fdd835, #ffeb3b)",
+          color: "#fbc02d",
           stat: 0,
         },
         {
           icon: "fas fa-refresh",
           title: "Retention Rate",
-          gradient: "linear-gradient(to right, #66bb6a, #81c784)",
+          color: "#388e3c",
           stat: 0,
         },
         {
           icon: "fas fa-exchange-alt",
           title: "Employee Turnover Rate",
-          gradient: "linear-gradient(to right, #ff7043, #ff8a65)",
+          color: "#d32f2f",
           stat: 0,
         },
         {
           icon: "fas fa-balance-scale",
           title: "Gender Pay Gap",
-          gradient: "linear-gradient(to right, #81c784, #66bb6a)",
+          color: "#8e24aa",
           stat: 0,
         },
         {
           icon: "fas fa-clock",
           title: "Absenteeism",
-          gradient: "linear-gradient(to right, #f06292, #f48fb1)",
+          color: "#ff5722", // Orange
           stat: 0,
         },
         {
           title: "Average Employee Tenure",
           icon: "fas fa-calendar-alt",
-          gradient: "linear-gradient(to right, #ffeb3b, #fbc02d)",
+          color: "#fbc02d", // Yellow
           stat: 0,
         },
       ],

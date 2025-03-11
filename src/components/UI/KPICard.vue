@@ -1,7 +1,7 @@
 <template>
   <div class="kpi-card">
     <div class="kpi-card-top">
-      <div class="kpi-icon" :style="{ background: gradient }">
+      <div class="kpi-icon" :style="{ background: color }">
         <i :class="icon"></i>
       </div>
       <div class="kpi-stat">
@@ -34,7 +34,7 @@ export default {
       type: String,
       required: true,
     },
-    gradient: {
+    color: {
       type: String,
       required: true,
     },

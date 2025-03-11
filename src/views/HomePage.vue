@@ -11,7 +11,7 @@
           :icon="kpi.icon"
           :stat="kpi.stat"
           :title="kpi.title"
-          :gradient="kpi.gradient"
+          :color="kpi.color"
         />
       </div>
 
@@ -118,37 +118,37 @@ export default {
         {
           icon: "fas fa-users",
           title: "Total Employees",
-          gradient: "linear-gradient(to right, #ff7043, #ff8a65)",
+          color: "#1976d2",
           key: "totalEmployees",
         },
         {
           icon: "fas fa-user-plus",
           title: "New Hires",
-          gradient: "linear-gradient(to right, #66bb6a, #81c784)",
+          color: "#388e3c",
           key: "newHiresThisMonth",
         },
         {
           icon: "fas fa-user-times",
           title: "Employees Absent",
-          gradient: "linear-gradient(to right, #f06292, #f48fb1)",
+          color: "#f44336",
           key: "employeesAbsentToday",
         },
         {
           icon: "fas fa-smile",
           title: "Employee Satisfaction",
-          gradient: "linear-gradient(to right, #64b5f6, #81d4fa)",
+          color: "#0288d1",
           key: "employeeSatisfaction",
         },
         {
           icon: "fas fa-briefcase",
           title: "Open Positions",
-          gradient: "linear-gradient(to right, #fdd835, #ffeb3b)",
+          color: "#fbc02d",
           key: "openPositions",
         },
         {
           icon: "fas fa-refresh",
           title: "Retention Rate",
-          gradient: "linear-gradient(to right, #66bb6a, #81c784)",
+          color: "#388e3c",
           key: "retentionRate",
         },
       ],
