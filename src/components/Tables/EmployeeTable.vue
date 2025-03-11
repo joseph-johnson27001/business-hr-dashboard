@@ -233,7 +233,7 @@ export default {
   display: grid;
   flex-direction: column;
   border-top: 1px solid #ddd;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
 }
 
 .search-input {
@@ -356,12 +356,6 @@ export default {
   .search-input {
     width: auto;
     margin-right: 0px;
-  }
-}
-
-@media (max-width: 600px) {
-  .employee-cards {
-    grid-template-columns: 1fr;
   }
 }
 </style>

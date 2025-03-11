@@ -161,23 +161,21 @@ export default {
       },
     };
   },
+
   created() {
-    // Fetching KPI data and graph data in parallel
     Promise.all([fetchKPIData(), fetchGraphData()]).then(
       ([kpiData, graphData]) => {
-        // Assigning KPI stats to their respective KPIs
         this.kpis = this.kpis.map((kpi) => ({
           ...kpi,
           stat: kpiData[kpi.key],
         }));
-        // Assigning graph data
         this.graphData = graphData;
         this.isLoading = false;
       }
     );
   },
+
   methods: {
-    // Handle timeframe changes for each graph
     onTimeframeChanged({ title, selectedOption }) {
       this.timeframes[title] = selectedOption.toLowerCase();
     },
