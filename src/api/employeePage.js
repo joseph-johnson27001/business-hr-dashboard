@@ -18,6 +18,10 @@ export const fetchEmployeeKPIs = () => {
         { stat: data.employeeSatisfaction },
         { stat: data.openPositions },
         { stat: data.retentionRate },
+        { stat: data.employeeTurnoverRate },
+        { stat: data.genderPayGap },
+        { stat: data.absenteeism },
+        { stat: data.averageTenure },
       ]);
     }, 250);
   });

@@ -2,12 +2,6 @@
   <div>
     <LoadingSpinner v-if="isLoading" />
     <div v-else class="main-content">
-      <div class="table-container">
-        <InfoCard title="Employees">
-          <EmployeeTable :employees="employees" />
-        </InfoCard>
-      </div>
-
       <!-- KPI Cards Section Below Table -->
       <div class="kpi-container">
         <KPICard
@@ -18,6 +12,11 @@
           :title="kpi.title"
           :gradient="kpi.gradient"
         />
+      </div>
+      <div class="table-container">
+        <InfoCard title="Employees">
+          <EmployeeTable :employees="employees" />
+        </InfoCard>
       </div>
     </div>
   </div>
@@ -42,12 +41,9 @@ export default {
     Promise.all([fetchTableData(), fetchEmployeeKPIs()])
       .then(([employeeData, kpiData]) => {
         this.employees = employeeData.employees;
-        console.log(employeeData);
-
-        // Map the fetched stats to the pre-defined structure of employeeKPIs
         this.employeeKPIs = this.employeeKPIs.map((kpi, index) => ({
           ...kpi,
-          stat: kpiData[index]?.stat || 0, // Safely map the stat to each KPI
+          stat: kpiData[index]?.stat || 0,
         }));
 
         this.isLoading = false;
@@ -67,37 +63,61 @@ export default {
           icon: "fas fa-users",
           title: "Total Employees",
           gradient: "linear-gradient(to right, #ff7043, #ff8a65)",
-          stat: 0, // This will be dynamically set
+          stat: 0,
         },
         {
           icon: "fas fa-user-plus",
           title: "New Hires",
           gradient: "linear-gradient(to right, #66bb6a, #81c784)",
-          stat: 0, // This will be dynamically set
+          stat: 0,
         },
         {
           icon: "fas fa-user-times",
           title: "Employees Absent",
           gradient: "linear-gradient(to right, #f06292, #f48fb1)",
-          stat: 0, // This will be dynamically set
+          stat: 0,
         },
         {
           icon: "fas fa-smile",
           title: "Employee Satisfaction",
           gradient: "linear-gradient(to right, #64b5f6, #81d4fa)",
-          stat: 0, // This will be dynamically set
+          stat: 0,
         },
         {
           icon: "fas fa-briefcase",
           title: "Open Positions",
           gradient: "linear-gradient(to right, #fdd835, #ffeb3b)",
-          stat: 0, // This will be dynamically set
+          stat: 0,
         },
         {
           icon: "fas fa-refresh",
           title: "Retention Rate",
           gradient: "linear-gradient(to right, #66bb6a, #81c784)",
-          stat: 0, // This will be dynamically set
+          stat: 0,
+        },
+        {
+          icon: "fas fa-exchange-alt",
+          title: "Employee Turnover Rate",
+          gradient: "linear-gradient(to right, #ff7043, #ff8a65)",
+          stat: 0,
+        },
+        {
+          icon: "fas fa-balance-scale",
+          title: "Gender Pay Gap",
+          gradient: "linear-gradient(to right, #81c784, #66bb6a)",
+          stat: 0,
+        },
+        {
+          icon: "fas fa-clock",
+          title: "Absenteeism",
+          gradient: "linear-gradient(to right, #f06292, #f48fb1)",
+          stat: 0,
+        },
+        {
+          title: "Average Employee Tenure",
+          icon: "fas fa-calendar-alt",
+          gradient: "linear-gradient(to right, #ffeb3b, #fbc02d)",
+          stat: 0,
         },
       ],
     };
@@ -114,18 +134,12 @@ export default {
 
 .kpi-container {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
-  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 1200px) {
-  .kpi-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 800px) {
   .kpi-container {
     grid-template-columns: repeat(2, 1fr);
   }

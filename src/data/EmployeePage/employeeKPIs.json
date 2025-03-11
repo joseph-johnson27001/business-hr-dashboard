@@ -1,8 +1,12 @@
 {
   "totalEmployees": 1200,
-  "newHiresThisMonth": 35,
-  "employeesAbsentToday": 45,
-  "employeeSatisfaction": 85,
-  "openPositions": 10,
-  "retentionRate": 92
+  "newHiresThisMonth": 50,
+  "employeesAbsentToday": 30,
+  "employeeSatisfaction": 88,
+  "openPositions": 15,
+  "retentionRate": 85,
+  "employeeTurnoverRate": 12,
+  "genderPayGap": 4.5,
+  "absenteeism": 6,
+  "averageTenure": 3.5
 }
