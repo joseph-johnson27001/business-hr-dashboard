@@ -125,10 +125,10 @@ i {
 
 .toggle-btn {
   position: absolute;
-  right: -0.5rem;
-  top: 50%;
-  width: 15px;
-  height: 15px;
+  right: -0.65rem;
+  bottom: 5%;
+  width: 20px;
+  height: 20px;
   background-color: #fff;
   border-radius: 50%;
   border: 1px solid #bbb;
