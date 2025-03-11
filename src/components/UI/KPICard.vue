@@ -9,12 +9,6 @@
         <div class="stat-title">{{ title }}</div>
       </div>
     </div>
-    <div class="kpi-card-bottom">
-      <hr class="divider" />
-      <span class="view-more-text">
-        View Details <i class="fas fa-chevron-right"></i>
-      </span>
-    </div>
   </div>
 </template>
 
@@ -84,29 +78,5 @@ export default {
 .stat-title {
   font-size: 14px;
   color: #888;
-}
-
-.kpi-card-bottom {
-  margin-top: auto;
-  cursor: pointer;
-}
-
-.divider {
-  margin: 15px 0;
-  width: 100%;
-  border: 0;
-  border-top: 1px solid #ddd;
-}
-
-.view-more-text {
-  font-size: 12px;
-  color: #555;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.view-more-text i {
-  margin-left: 5px;
 }
 </style>

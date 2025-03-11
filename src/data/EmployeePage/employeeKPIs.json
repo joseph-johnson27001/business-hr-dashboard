@@ -8,5 +8,5 @@
   "employeeTurnoverRate": 12,
   "genderPayGap": 4.5,
   "absenteeism": 6,
-  "averageTenure": 3.5
+  "genderBreakdown": "55/45"
 }

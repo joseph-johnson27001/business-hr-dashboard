@@ -165,10 +165,10 @@ export default {
           stat: 0,
         },
         {
-          title: "Average Employee Tenure",
-          icon: "fas fa-calendar-alt",
+          title: "Gender Ratio",
+          icon: "fas fa-restroom",
           color: "#fbc02d",
-          stat: 0,
+          stat: "0",
         },
       ],
     };
