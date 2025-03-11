@@ -15,6 +15,7 @@ import {
   Legend,
   BarController,
 } from "chart.js";
+import { toRaw } from "vue";
 
 ChartJS.register(
   BarController,
@@ -55,8 +56,11 @@ export default {
     this.destroyChart();
   },
   watch: {
-    data() {
-      this.renderChart();
+    data: {
+      handler() {
+        toRaw(this.chartInstance).destroy();
+        this.renderChart();
+      },
     },
   },
   methods: {
@@ -95,7 +99,7 @@ export default {
     },
     destroyChart() {
       if (this.chartInstance && this.isMounted) {
-        this.chartInstance.destroy();
+        toRaw(this.chartInstance).destroy();
       }
     },
   },

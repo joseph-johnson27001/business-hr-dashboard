@@ -16,6 +16,7 @@ import {
   Legend,
   LineController,
 } from "chart.js";
+import { toRaw } from "vue";
 
 ChartJS.register(
   LineController,
@@ -57,8 +58,11 @@ export default {
     this.destroyChart();
   },
   watch: {
-    data(newData) {
-      this.renderChart(newData);
+    data: {
+      handler() {
+        toRaw(this.chartInstance).destroy();
+        this.renderChart();
+      },
     },
   },
   methods: {
@@ -111,8 +115,7 @@ export default {
     },
     destroyChart() {
       if (this.chartInstance) {
-        this.chartInstance.destroy();
-        this.chartInstance = null;
+        toRaw(this.chartInstance).destroy();
       }
     },
   },
