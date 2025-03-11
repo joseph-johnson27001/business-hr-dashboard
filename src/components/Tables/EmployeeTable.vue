@@ -22,7 +22,10 @@
 
     <!-- Employee Table (Hidden on Mobile) -->
     <div v-if="!isMobile" class="table-wrapper">
-      <table class="employee-table">
+      <div v-if="searchQuery.length !== 0 && filteredEmployees.length == 0">
+        <p>No matches available</p>
+      </div>
+      <table class="employee-table" v-else>
         <thead>
           <tr>
             <th>Name</th>
@@ -244,7 +247,7 @@ export default {
   border: 1px solid #bbb;
   border-radius: 4px;
   font-size: 14px;
-  margin-right: 10px;
+
   background-color: #fefefe;
   font-family: "Assistant";
   outline: none;
@@ -356,7 +359,6 @@ export default {
 
   .search-input {
     width: auto;
-    margin-right: 0px;
   }
 }
 </style>

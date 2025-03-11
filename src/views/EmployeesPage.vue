@@ -252,11 +252,13 @@ export default {
   .kpi-container {
     grid-template-columns: repeat(2, 1fr);
   }
+  .graph-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 500px) {
-  .kpi-container,
-  .graph-container {
+  .kpi-container {
     grid-template-columns: 1fr;
   }
 }
