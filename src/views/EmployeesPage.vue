@@ -1,7 +1,7 @@
 <template>
   <div class="main-content">
     <div class="table-container">
-      <InfoCard title="Employee Information">
+      <InfoCard title="Employees">
         <EmployeeTable :employees="employees" />
       </InfoCard>
     </div>

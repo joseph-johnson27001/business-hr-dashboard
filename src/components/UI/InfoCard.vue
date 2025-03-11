@@ -1,6 +1,8 @@
 <template>
   <div class="info-card">
-    <h3 class="info-card-title">{{ title }}</h3>
+    <div class="info-card-header">
+      <h2 class="info-card-title">{{ title }}</h2>
+    </div>
     <div class="chart-container">
       <slot></slot>
     </div>
@@ -28,12 +30,19 @@ export default {
   box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 4px;
   display: flex;
   flex-direction: column;
+  font-family: "Roboto";
 }
 
 .chart-container {
   flex: 1;
   min-height: 200px;
   width: 100%;
+}
+
+.info-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .info-card-title {
