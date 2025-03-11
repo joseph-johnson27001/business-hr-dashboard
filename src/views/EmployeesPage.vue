@@ -18,14 +18,40 @@
           <EmployeeTable :employees="employees" />
         </InfoCard>
       </div>
+      <div class="graph-container">
+        <!-- Total Employees Graph -->
+        <GraphContainerCard
+          title="Total Employees"
+          @timeframe-changed="onTimeframeChanged"
+        >
+          <TotalEmployeesGraph
+            v-if="graphData.totalEmployees"
+            :labels="
+              graphData.totalEmployees[timeframes['Total Employees']].labels
+            "
+            :data="graphData.totalEmployees[timeframes['Total Employees']].data"
+          />
+        </GraphContainerCard>
+        <GraphContainerCard
+          title="Employee Net Promoter Score"
+          @timeframe-changed="onTimeframeChanged"
+        >
+        </GraphContainerCard>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import InfoCard from "@/components/UI/InfoCard.vue";
+import TotalEmployeesGraph from "@/components/Graphs/EmployeesPage/TotalEmployeesGraph.vue";
+import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
 import EmployeeTable from "@/components/Tables/EmployeeTable.vue";
-import { fetchTableData, fetchEmployeeKPIs } from "@/api/employeePage.js";
+import {
+  fetchTableData,
+  fetchEmployeeKPIs,
+  fetchGraphData,
+} from "@/api/employeePage.js";
 import LoadingSpinner from "@/components/UI/LoadingSpinner.vue";
 import KPICard from "@/components/UI/KPICard.vue";
 
@@ -35,11 +61,15 @@ export default {
     EmployeeTable,
     LoadingSpinner,
     KPICard,
+    GraphContainerCard,
+    TotalEmployeesGraph,
   },
 
   created() {
-    Promise.all([fetchTableData(), fetchEmployeeKPIs()])
-      .then(([employeeData, kpiData]) => {
+    Promise.all([fetchTableData(), fetchEmployeeKPIs(), fetchGraphData()])
+      .then(([employeeData, kpiData, graphData]) => {
+        console.log(graphData);
+        this.graphData = graphData;
         this.employees = employeeData.employees;
         this.employeeKPIs = this.employeeKPIs.map((kpi, index) => ({
           ...kpi,
@@ -57,7 +87,12 @@ export default {
   data() {
     return {
       isLoading: true,
+      timeframes: {
+        "Total Employees": "monthly",
+      },
+
       employees: [],
+      graphData: {},
       employeeKPIs: [
         {
           icon: "fas fa-users",
@@ -110,17 +145,22 @@ export default {
         {
           icon: "fas fa-clock",
           title: "Absenteeism",
-          color: "#ff5722", // Orange
+          color: "#ff5722",
           stat: 0,
         },
         {
           title: "Average Employee Tenure",
           icon: "fas fa-calendar-alt",
-          color: "#fbc02d", // Yellow
+          color: "#fbc02d",
           stat: 0,
         },
       ],
     };
+  },
+  methods: {
+    onTimeframeChanged({ title, selectedOption }) {
+      this.timeframes[title] = selectedOption.toLowerCase();
+    },
   },
 };
 </script>
@@ -139,6 +179,13 @@ export default {
   margin-bottom: 10px;
 }
 
+.graph-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 10px;
+  gap: 10px;
+}
+
 @media (max-width: 1200px) {
   .kpi-container {
     grid-template-columns: repeat(2, 1fr);
@@ -146,7 +193,8 @@ export default {
 }
 
 @media (max-width: 500px) {
-  .kpi-container {
+  .kpi-container,
+  .graph-container {
     grid-template-columns: 1fr;
   }
 }

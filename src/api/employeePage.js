@@ -26,3 +26,12 @@ export const fetchEmployeeKPIs = () => {
     }, 250);
   });
 };
+
+export const fetchGraphData = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const data = require("@/data/EmployeePage/graphsData.json");
+      resolve(data);
+    }, 250);
+  });
+};
