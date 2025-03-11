@@ -50,7 +50,7 @@ export default {
       if (this.isCollapsed) {
         setTimeout(() => {
           this.textVisible = true;
-        }, 60);
+        }, 70);
       } else {
         this.textVisible = false;
       }
@@ -66,7 +66,7 @@ export default {
 
 <style scoped>
 .sidebar {
-  width: 225px;
+  width: 215px;
   background-color: #ffffff;
   height: 100%;
   border-right: 1px solid #ccc;
@@ -84,7 +84,7 @@ export default {
 nav {
   width: 100%;
   height: 100%;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
 }
 
 nav ul {
@@ -95,12 +95,13 @@ nav ul {
   display: flex;
   flex-direction: column;
   align-items: space-between;
+  margin-top: 5px;
 }
 
 nav li {
   padding: 10px;
   cursor: pointer;
-  margin: 10px;
+  margin: 15px 10px;
   border-radius: 5px;
 }
 
@@ -142,7 +143,7 @@ i {
 .toggle-btn {
   position: absolute;
   right: -0.65rem;
-  bottom: 5%;
+  bottom: 10%;
   width: 20px;
   height: 20px;
   background-color: #fff;
