@@ -50,7 +50,7 @@ export default {
       if (this.isCollapsed) {
         setTimeout(() => {
           this.textVisible = true;
-        }, 70);
+        }, 100);
       } else {
         this.textVisible = false;
       }
@@ -66,7 +66,7 @@ export default {
 
 <style scoped>
 .sidebar {
-  width: 215px;
+  width: 175px;
   background-color: #ffffff;
   height: 100%;
   border-right: 1px solid #ccc;
