@@ -6,3 +6,19 @@ export const fetchTableData = () => {
     }, 250);
   });
 };
+
+export const fetchEmployeeKPIs = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const data = require("@/data/EmployeePage/employeeKPIs.json");
+      resolve([
+        { stat: data.totalEmployees },
+        { stat: data.newHiresThisMonth },
+        { stat: data.employeesAbsentToday },
+        { stat: data.employeeSatisfaction },
+        { stat: data.openPositions },
+        { stat: data.retentionRate },
+      ]);
+    }, 250);
+  });
+};
