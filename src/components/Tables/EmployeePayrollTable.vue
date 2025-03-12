@@ -122,7 +122,7 @@
 <script>
 export default {
   props: {
-    employees: Array, // Prop to accept dynamic employee data
+    employees: Array,
   },
   data() {
     return {
@@ -134,6 +134,12 @@ export default {
     };
   },
   computed: {
+    departments() {
+      const departmentSet = new Set(
+        this.employees.map((employee) => employee.department)
+      );
+      return Array.from(departmentSet);
+    },
     filteredEmployees() {
       return this.employees.filter((employee) => {
         const matchesSearch =
