@@ -85,8 +85,8 @@ export default {
       employees: [],
       graphData: {},
       timeframes: {
-        "Total Payroll": "yearly",
-        "Average Salary": "yearly",
+        "Total Payroll": "monthly",
+        "Average Salary": "monthly",
       },
     };
   },
