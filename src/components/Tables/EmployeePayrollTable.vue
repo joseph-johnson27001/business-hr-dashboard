@@ -20,19 +20,20 @@
       </select>
     </div>
 
-    <!-- Employee Table (Hidden on Mobile) -->
+    <!-- Payroll Table (Hidden on Mobile) -->
     <div v-if="!isMobile" class="table-wrapper">
       <div v-if="searchQuery.length !== 0 && filteredEmployees.length == 0">
         <p>No matches available</p>
       </div>
-      <table class="employee-table" v-else>
+      <table class="payroll-table" v-else>
         <thead>
           <tr>
             <th>Name</th>
-            <th>Position</th>
-            <th>Status</th>
-            <th>Location</th>
-            <th>Join Date</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Bonus</th>
+            <th>Deductions</th>
+            <th>Net Pay</th>
           </tr>
         </thead>
         <tbody>
@@ -51,12 +52,11 @@
                 {{ employee.name }}
               </div>
             </td>
-            <td>{{ employee.position }}</td>
-            <td :class="getStatusClass(employee.status)">
-              {{ employee.status }}
-            </td>
-            <td>{{ employee.location }}</td>
-            <td>{{ formatDate(employee.joinDate) }}</td>
+            <td>{{ employee.department }}</td>
+            <td>${{ formatNumber(employee.salary) }}</td>
+            <td>${{ formatNumber(employee.bonus) }}</td>
+            <td>${{ formatNumber(employee.deductions) }}</td>
+            <td class="net-pay">${{ formatNumber(employee.netPay) }}</td>
           </tr>
         </tbody>
       </table>
@@ -79,20 +79,28 @@
           <span class="employee-name">{{ employee.name }}</span>
         </div>
         <p>
-          <span class="employee-stat">Position:</span> {{ employee.position }}
+          <span class="employee-stat">Department:</span>
+          {{ employee.department }}
         </p>
         <p>
-          <span class="employee-stat">Status:</span>
-          <span class="employee-stat" :class="getStatusClass(employee.status)">
-            {{ " " + employee.status }}</span
-          >
+          <span class="employee-stat">Salary:</span> ${{
+            formatNumber(employee.salary)
+          }}
         </p>
         <p>
-          <span class="employee-stat">Location:</span> {{ employee.location }}
+          <span class="employee-stat">Bonus:</span> ${{
+            formatNumber(employee.bonus)
+          }}
         </p>
         <p>
-          <span class="employee-stat">Joined:</span>
-          {{ formatDate(employee.joinDate) }}
+          <span class="employee-stat">Deductions:</span> ${{
+            formatNumber(employee.deductions)
+          }}
+        </p>
+        <p class="net-pay">
+          <span class="employee-stat">Net Pay:</span> ${{
+            formatNumber(employee.netPay)
+          }}
         </p>
       </div>
     </div>
@@ -113,9 +121,6 @@
 
 <script>
 export default {
-  props: {
-    employees: Array,
-  },
   data() {
     return {
       searchQuery: "",
@@ -123,6 +128,38 @@ export default {
       currentPage: 1,
       itemsPerPage: 5,
       isMobile: window.innerWidth < 768,
+      employees: [
+        {
+          id: 1,
+          name: "Alice Johnson",
+          department: "Finance",
+          salary: 6000,
+          bonus: 500,
+          deductions: 300,
+          netPay: 6200,
+          photoUrl: "/images/ProfilePhoto1.jpg",
+        },
+        {
+          id: 2,
+          name: "Bob Smith",
+          department: "Engineering",
+          salary: 7500,
+          bonus: 1000,
+          deductions: 500,
+          netPay: 8000,
+          photoUrl: "/images/ProfilePhoto2.jpg",
+        },
+        {
+          id: 3,
+          name: "Charlie Brown",
+          department: "HR",
+          salary: 5500,
+          bonus: 300,
+          deductions: 200,
+          netPay: 5600,
+          photoUrl: "/images/ProfilePhoto3.jpg",
+        },
+      ],
     };
   },
   computed: {
@@ -138,13 +175,7 @@ export default {
           employee.name
             .toLowerCase()
             .includes(this.searchQuery.toLowerCase()) ||
-          employee.position
-            .toLowerCase()
-            .includes(this.searchQuery.toLowerCase()) ||
-          employee.status
-            .toLowerCase()
-            .includes(this.searchQuery.toLowerCase()) ||
-          employee.location
+          employee.department
             .toLowerCase()
             .includes(this.searchQuery.toLowerCase());
 
@@ -168,19 +199,8 @@ export default {
     navigateToUser() {
       this.$router.push(`/employee`);
     },
-    getStatusClass(status) {
-      switch (status) {
-        case "Active":
-          return "status-active";
-        case "On Leave":
-          return "status-on-leave";
-        default:
-          return "";
-      }
-    },
-    formatDate(date) {
-      const options = { year: "numeric", month: "short", day: "numeric" };
-      return new Date(date).toLocaleDateString("en-US", options);
+    formatNumber(value) {
+      return value.toLocaleString();
     },
     changePage(page) {
       if (page < 1 || page > this.totalPages) return;
@@ -200,12 +220,13 @@ export default {
 </script>
 
 <style scoped>
+/* Table Styles */
 .table-wrapper {
   overflow-x: auto;
   max-width: 100%;
 }
 
-.employee-table {
+.payroll-table {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid #ddd;
@@ -213,20 +234,20 @@ export default {
   font-family: "Assistant", sans-serif;
 }
 
-.employee-table th,
-.employee-table td {
+.payroll-table th,
+.payroll-table td {
   padding: 10px;
   text-align: left;
   border: 1px solid #ddd;
 }
 
-.employee-table th {
+.payroll-table th {
   background-color: #1976d2;
   color: white;
   font-weight: 400;
 }
 
-.employee-table tbody tr:hover {
+.payroll-table tbody tr:hover {
   background-color: #f5f5f5;
   cursor: pointer;
 }
