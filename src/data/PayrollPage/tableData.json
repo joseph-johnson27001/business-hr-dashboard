@@ -29,6 +29,126 @@
       "deductions": 150,
       "netPay": 5650,
       "photoUrl": "images/ProfilePhoto3.jpg"
+    },
+    {
+      "id": 4,
+      "name": "David Wilson",
+      "department": "Marketing",
+      "salary": 6200,
+      "bonus": 400,
+      "deductions": 250,
+      "netPay": 6350,
+      "photoUrl": "images/ProfilePhoto1.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Eva Green",
+      "department": "Sales",
+      "salary": 7200,
+      "bonus": 600,
+      "deductions": 350,
+      "netPay": 7450,
+      "photoUrl": "images/ProfilePhoto2.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Frank Taylor",
+      "department": "Operations",
+      "salary": 6800,
+      "bonus": 700,
+      "deductions": 400,
+      "netPay": 7100,
+      "photoUrl": "images/ProfilePhoto3.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Grace Lee",
+      "department": "Finance",
+      "salary": 8000,
+      "bonus": 900,
+      "deductions": 450,
+      "netPay": 8450,
+      "photoUrl": "images/ProfilePhoto1.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Hank Brown",
+      "department": "Engineering",
+      "salary": 9500,
+      "bonus": 1200,
+      "deductions": 500,
+      "netPay": 10200,
+      "photoUrl": "images/ProfilePhoto2.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Isla Harris",
+      "department": "HR",
+      "salary": 5600,
+      "bonus": 250,
+      "deductions": 100,
+      "netPay": 5750,
+      "photoUrl": "images/ProfilePhoto3.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Jackie Miller",
+      "department": "Marketing",
+      "salary": 6700,
+      "bonus": 800,
+      "deductions": 350,
+      "netPay": 7150,
+      "photoUrl": "images/ProfilePhoto1.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Kenny Davis",
+      "department": "Sales",
+      "salary": 7400,
+      "bonus": 500,
+      "deductions": 300,
+      "netPay": 7600,
+      "photoUrl": "images/ProfilePhoto2.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Lily Moore",
+      "department": "Operations",
+      "salary": 6700,
+      "bonus": 650,
+      "deductions": 300,
+      "netPay": 7050,
+      "photoUrl": "images/ProfilePhoto3.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Mason Scott",
+      "department": "Marketing",
+      "salary": 5800,
+      "bonus": 350,
+      "deductions": 250,
+      "netPay": 5900,
+      "photoUrl": "images/ProfilePhoto1.jpg"
+    },
+    {
+      "id": 14,
+      "name": "Nancy Adams",
+      "department": "Engineering",
+      "salary": 8100,
+      "bonus": 1000,
+      "deductions": 450,
+      "netPay": 8650,
+      "photoUrl": "images/ProfilePhoto2.jpg"
+    },
+    {
+      "id": 15,
+      "name": "Oscar Phillips",
+      "department": "HR",
+      "salary": 5600,
+      "bonus": 200,
+      "deductions": 150,
+      "netPay": 5650,
+      "photoUrl": "images/ProfilePhoto3.jpg"
     }
   ]
 }
