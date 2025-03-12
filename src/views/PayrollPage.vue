@@ -5,40 +5,12 @@
       <!-- KPI Cards Grid -->
       <div class="kpi-grid">
         <KpiCard
-          icon="fas fa-dollar-sign"
-          :stat="kpiData.totalPayrollMonthly"
-          title="Total Payroll (Monthly)"
-          color="#4CAF50"
-        />
-        <KpiCard
-          icon="fas fa-wallet"
-          :stat="kpiData.totalPayrollYearly"
-          title="Total Payroll (Yearly)"
-          color="#2196F3"
-        />
-        <KpiCard
-          icon="fas fa-money-bill-wave"
-          :stat="kpiData.averageSalaryMonthly"
-          title="Average Salary (Monthly)"
-          color="#FF9800"
-        />
-        <KpiCard
-          icon="fas fa-chart-line"
-          :stat="kpiData.averageSalaryYearly"
-          title="Average Salary (Yearly)"
-          color="#9C27B0"
-        />
-        <KpiCard
-          icon="fas fa-hourglass-half"
-          :stat="kpiData.pendingPayments"
-          title="Pending Payments"
-          color="#E91E63"
-        />
-        <KpiCard
-          icon="fas fa-exclamation-circle"
-          :stat="kpiData.pendingPaymentValue"
-          title="Pending Payment Value"
-          color="#F44336"
+          v-for="(kpi, index) in kpiData"
+          :key="index"
+          :icon="kpi.icon"
+          :stat="kpi.stat"
+          :title="kpi.title"
+          :color="kpi.color"
         />
       </div>
 
@@ -47,15 +19,13 @@
         <GraphContainerCard
           title="Payroll"
           @timeframe-changed="onTimeframeChanged"
-        >
-        </GraphContainerCard>
+        ></GraphContainerCard>
 
         <!-- Average Salary Graph -->
         <GraphContainerCard
           title="Average Salary"
           @timeframe-changed="onTimeframeChanged"
-        >
-        </GraphContainerCard>
+        ></GraphContainerCard>
       </div>
 
       <div class="table-container">
@@ -86,30 +56,65 @@ export default {
   data() {
     return {
       isLoading: true,
-      kpiData: {},
+      kpiData: [],
       employees: [],
     };
   },
   async mounted() {
     this.isLoading = true;
+    try {
+      const [kpiData, employeeData] = await Promise.all([
+        fetchKPIData(),
+        fetchTableData(),
+      ]);
+      this.kpiData = [
+        {
+          icon: "fas fa-dollar-sign",
+          title: "Total Payroll (Monthly)",
+          color: "#4CAF50",
+          stat: kpiData.totalPayrollMonthly || 0,
+        },
+        {
+          icon: "fas fa-wallet",
+          title: "Total Payroll (Yearly)",
+          color: "#2196F3",
+          stat: kpiData.totalPayrollYearly || 0,
+        },
+        {
+          icon: "fas fa-money-bill-wave",
+          title: "Average Salary (Monthly)",
+          color: "#FF9800",
+          stat: kpiData.averageSalaryMonthly || 0,
+        },
+        {
+          icon: "fas fa-chart-line",
+          title: "Average Salary (Yearly)",
+          color: "#9C27B0",
+          stat: kpiData.averageSalaryYearly || 0,
+        },
+        {
+          icon: "fas fa-hourglass-half",
+          title: "Pending Payments",
+          color: "#E91E63",
+          stat: kpiData.pendingPayments || 0,
+        },
+        {
+          icon: "fas fa-exclamation-circle",
+          title: "Pending Payment Value",
+          color: "#F44336",
+          stat: kpiData.pendingPaymentValue || 0,
+        },
+      ];
 
-    // Use Promise.all to fetch both sets of data concurrently
-    Promise.all([fetchKPIData(), fetchTableData()])
-      .then(([kpiData, employeeData]) => {
-        // Set the KPI data
-        this.kpiData = kpiData;
+      this.employees = employeeData.employees;
 
-        // Set the employee data
-        this.employees = employeeData.employees;
-
-        // Set isLoading to false once both data are fetched
-        this.isLoading = false;
-      })
-      .catch((error) => {
-        // Handle any errors during the fetch
-        console.error("Error fetching data:", error);
-        this.isLoading = false;
-      });
+      // Set isLoading to false once both data are fetched
+      this.isLoading = false;
+    } catch (error) {
+      // Handle any errors during the fetch
+      this.isLoading = false;
+      console.error("Error fetching data:", error);
+    }
   },
 };
 </script>

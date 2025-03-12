@@ -1,8 +1,8 @@
 {
-  "totalPayrollMonthly": 250000,
-  "totalPayrollYearly": 3000000,
-  "averageSalaryMonthly": 5200,
-  "averageSalaryYearly": 62400,
+  "totalPayrollMonthly": "£25000",
+  "totalPayrollYearly": "£22150",
+  "averageSalaryMonthly": "£5200",
+  "averageSalaryYearly": "£62400",
   "pendingPayments": 12,
-  "pendingPaymentValue": 24000
+  "pendingPaymentValue": "£24000"
 }
