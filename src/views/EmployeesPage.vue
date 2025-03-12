@@ -220,7 +220,6 @@ export default {
 
   methods: {
     onTimeframeChanged({ title, selectedOption }) {
-      // Update the selected timeframe for a specific graph
       this.timeframes[title] = selectedOption.toLowerCase();
     },
   },

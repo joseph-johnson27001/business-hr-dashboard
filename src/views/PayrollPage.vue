@@ -16,13 +16,15 @@
 
       <!-- Payroll Graph -->
       <div class="graphs-container">
+        <!-- Total Payroll Graph -->
         <GraphContainerCard
           title="Total Payroll"
           @timeframe-changed="onTimeframeChanged"
         >
           <PayrollGraph
-            :labels="graphData.totalPayroll.yearly.labels"
-            :data="graphData.totalPayroll.yearly.data"
+            v-if="graphData.totalPayroll"
+            :labels="graphData.totalPayroll[timeframes['Total Payroll']].labels"
+            :data="graphData.totalPayroll[timeframes['Total Payroll']].data"
           />
         </GraphContainerCard>
 
@@ -32,8 +34,13 @@
           @timeframe-changed="onTimeframeChanged"
         >
           <AverageSalarayGraph
-            :labels="graphData.salaryExpenditure.yearly.labels"
-            :data="graphData.salaryExpenditure.yearly.data"
+            v-if="graphData.salaryExpenditure"
+            :labels="
+              graphData.salaryExpenditure[timeframes['Average Salary']].labels
+            "
+            :data="
+              graphData.salaryExpenditure[timeframes['Average Salary']].data
+            "
           />
         </GraphContainerCard>
       </div>
@@ -77,6 +84,10 @@ export default {
       kpiData: [],
       employees: [],
       graphData: {},
+      timeframes: {
+        "Total Payroll": "yearly",
+        "Average Salary": "yearly",
+      },
     };
   },
   async mounted() {
@@ -135,8 +146,8 @@ export default {
     }
   },
   methods: {
-    onTimeframeChanged(timeframe) {
-      console.log("Timeframe changed to:", timeframe);
+    onTimeframeChanged({ title, selectedOption }) {
+      this.timeframes[title] = selectedOption.toLowerCase();
     },
   },
 };

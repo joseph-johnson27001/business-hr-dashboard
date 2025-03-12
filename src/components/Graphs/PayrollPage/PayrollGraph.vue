@@ -28,7 +28,7 @@ ChartJS.register(
 );
 
 export default {
-  name: "TotalPayrollGraph", // Change name to TotalPayrollGraph
+  name: "TotalPayrollGraph",
   props: {
     labels: {
       type: Array,

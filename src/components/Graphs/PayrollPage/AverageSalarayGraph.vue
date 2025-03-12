@@ -94,6 +94,11 @@ export default {
             x: { grid: { display: false } },
             y: {
               grid: { display: true },
+              ticks: {
+                callback: function (value) {
+                  return "£" + value.toLocaleString();
+                },
+              },
             },
           },
           plugins: {
@@ -101,7 +106,7 @@ export default {
             legend: { display: false },
             tooltip: {
               callbacks: {
-                label: (tooltipItem) => `$${tooltipItem.raw.toLocaleString()}`,
+                label: (tooltipItem) => `£${tooltipItem.raw.toLocaleString()}`,
               },
             },
           },
