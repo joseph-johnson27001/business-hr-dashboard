@@ -15,3 +15,12 @@ export const fetchTableData = () => {
     }, 250);
   });
 };
+
+export const fetchGraphData = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const data = require("@/data/PayrollPage/graphData.json");
+      resolve(data);
+    }, 250);
+  });
+};

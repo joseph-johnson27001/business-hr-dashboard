@@ -17,15 +17,25 @@
       <!-- Payroll Graph -->
       <div class="graphs-container">
         <GraphContainerCard
-          title="Payroll"
+          title="Total Payroll"
           @timeframe-changed="onTimeframeChanged"
-        ></GraphContainerCard>
+        >
+          <PayrollGraph
+            :labels="graphData.totalPayroll.yearly.labels"
+            :data="graphData.totalPayroll.yearly.data"
+          />
+        </GraphContainerCard>
 
         <!-- Average Salary Graph -->
         <GraphContainerCard
           title="Average Salary"
           @timeframe-changed="onTimeframeChanged"
-        ></GraphContainerCard>
+        >
+          <AverageSalarayGraph
+            :labels="graphData.salaryExpenditure.yearly.labels"
+            :data="graphData.salaryExpenditure.yearly.data"
+          />
+        </GraphContainerCard>
       </div>
 
       <div class="table-container">
@@ -42,8 +52,14 @@ import KpiCard from "@/components/UI/KPICard.vue";
 import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
 import EmployeePayrollTable from "@/components/Tables/EmployeePayrollTable.vue";
 import InfoCard from "@/components/UI/InfoCard.vue";
-import { fetchKPIData, fetchTableData } from "@/api/payrollPage";
+import {
+  fetchKPIData,
+  fetchTableData,
+  fetchGraphData,
+} from "@/api/payrollPage";
 import LoadingSpinner from "@/components/UI/LoadingSpinner.vue";
+import PayrollGraph from "@/components/Graphs/PayrollPage/PayrollGraph.vue";
+import AverageSalarayGraph from "@/components/Graphs/PayrollPage/AverageSalarayGraph.vue";
 
 export default {
   components: {
@@ -52,21 +68,26 @@ export default {
     EmployeePayrollTable,
     InfoCard,
     LoadingSpinner,
+    PayrollGraph,
+    AverageSalarayGraph,
   },
   data() {
     return {
       isLoading: true,
       kpiData: [],
       employees: [],
+      graphData: {},
     };
   },
   async mounted() {
     this.isLoading = true;
     try {
-      const [kpiData, employeeData] = await Promise.all([
+      const [kpiData, employeeData, graphData] = await Promise.all([
         fetchKPIData(),
         fetchTableData(),
+        fetchGraphData(),
       ]);
+
       this.kpiData = [
         {
           icon: "fas fa-dollar-sign",
@@ -105,16 +126,18 @@ export default {
           stat: kpiData.pendingPaymentValue || 0,
         },
       ];
-
       this.employees = employeeData.employees;
-
-      // Set isLoading to false once both data are fetched
+      this.graphData = graphData;
       this.isLoading = false;
     } catch (error) {
-      // Handle any errors during the fetch
       this.isLoading = false;
       console.error("Error fetching data:", error);
     }
+  },
+  methods: {
+    onTimeframeChanged(timeframe) {
+      console.log("Timeframe changed to:", timeframe);
+    },
   },
 };
 </script>
