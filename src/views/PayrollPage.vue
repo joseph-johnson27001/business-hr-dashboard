@@ -4,37 +4,37 @@
     <div class="kpi-grid">
       <KpiCard
         icon="fas fa-dollar-sign"
-        stat="$250,000"
+        :stat="kpiData.totalPayrollMonthly"
         title="Total Payroll (Monthly)"
         color="#4CAF50"
       />
       <KpiCard
         icon="fas fa-wallet"
-        stat="$3,000,000"
+        :stat="kpiData.totalPayrollYearly"
         title="Total Payroll (Yearly)"
         color="#2196F3"
       />
       <KpiCard
         icon="fas fa-money-bill-wave"
-        stat="$5,200"
+        :stat="kpiData.averageSalaryMonthly"
         title="Average Salary (Monthly)"
         color="#FF9800"
       />
       <KpiCard
         icon="fas fa-chart-line"
-        stat="$62,400"
+        :stat="kpiData.averageSalaryYearly"
         title="Average Salary (Yearly)"
         color="#9C27B0"
       />
       <KpiCard
         icon="fas fa-hourglass-half"
-        stat="12"
+        :stat="kpiData.pendingPayments"
         title="Pending Payments"
         color="#E91E63"
       />
       <KpiCard
         icon="fas fa-exclamation-circle"
-        stat="$24,000"
+        :stat="kpiData.pendingPaymentValue"
         title="Pending Payment Value"
         color="#F44336"
       />
@@ -69,6 +69,7 @@ import KpiCard from "@/components/UI/KPICard.vue";
 import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
 import EmployeePayrollTable from "@/components/Tables/EmployeePayrollTable.vue";
 import InfoCard from "@/components/UI/InfoCard.vue";
+import { fetchKPIData, fetchTableData } from "@/api/payrollPage";
 
 export default {
   components: {
@@ -76,6 +77,17 @@ export default {
     GraphContainerCard,
     EmployeePayrollTable,
     InfoCard,
+  },
+  data() {
+    return {
+      kpiData: {},
+      employees: [],
+    };
+  },
+  async mounted() {
+    this.kpiData = await fetchKPIData();
+    this.employeeData = await fetchTableData();
+    this.employees = this.employeeData.employees;
   },
 };
 </script>

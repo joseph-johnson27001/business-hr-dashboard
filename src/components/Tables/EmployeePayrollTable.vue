@@ -121,6 +121,9 @@
 
 <script>
 export default {
+  props: {
+    employees: Array, // Prop to accept dynamic employee data
+  },
   data() {
     return {
       searchQuery: "",
@@ -128,47 +131,9 @@ export default {
       currentPage: 1,
       itemsPerPage: 5,
       isMobile: window.innerWidth < 768,
-      employees: [
-        {
-          id: 1,
-          name: "Alice Johnson",
-          department: "Finance",
-          salary: 6000,
-          bonus: 500,
-          deductions: 300,
-          netPay: 6200,
-          photoUrl: "/images/ProfilePhoto1.jpg",
-        },
-        {
-          id: 2,
-          name: "Bob Smith",
-          department: "Engineering",
-          salary: 7500,
-          bonus: 1000,
-          deductions: 500,
-          netPay: 8000,
-          photoUrl: "/images/ProfilePhoto2.jpg",
-        },
-        {
-          id: 3,
-          name: "Charlie Brown",
-          department: "HR",
-          salary: 5500,
-          bonus: 300,
-          deductions: 200,
-          netPay: 5600,
-          photoUrl: "/images/ProfilePhoto3.jpg",
-        },
-      ],
     };
   },
   computed: {
-    departments() {
-      const departmentSet = new Set(
-        this.employees.map((employee) => employee.department)
-      );
-      return Array.from(departmentSet);
-    },
     filteredEmployees() {
       return this.employees.filter((employee) => {
         const matchesSearch =
