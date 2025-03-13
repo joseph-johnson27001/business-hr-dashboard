@@ -1,0 +1,84 @@
+{
+  "attendanceRecords": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "photoUrl": "https://randomuser.me/api/portraits/men/1.jpg",
+      "department": "Engineering",
+      "absenceDate": "2024-03-10",
+      "reason": "Sick Leave"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "photoUrl": "https://randomuser.me/api/portraits/women/2.jpg",
+      "department": "Marketing",
+      "absenceDate": "2024-03-08",
+      "reason": "Vacation"
+    },
+    {
+      "id": 3,
+      "name": "Emily Johnson",
+      "photoUrl": "https://randomuser.me/api/portraits/women/3.jpg",
+      "department": "Sales",
+      "absenceDate": "2024-03-12",
+      "reason": "Family Emergency"
+    },
+    {
+      "id": 4,
+      "name": "Michael Brown",
+      "photoUrl": "https://randomuser.me/api/portraits/men/4.jpg",
+      "department": "Human Resources",
+      "absenceDate": "2024-03-09",
+      "reason": "Personal Leave"
+    },
+    {
+      "id": 5,
+      "name": "Sophia Wilson",
+      "photoUrl": "https://randomuser.me/api/portraits/women/5.jpg",
+      "department": "Finance",
+      "absenceDate": "2024-03-11",
+      "reason": "Medical Appointment"
+    },
+    {
+      "id": 6,
+      "name": "Daniel Martinez",
+      "photoUrl": "https://randomuser.me/api/portraits/men/6.jpg",
+      "department": "Engineering",
+      "absenceDate": "2024-03-07",
+      "reason": "Business Trip"
+    },
+    {
+      "id": 7,
+      "name": "Olivia Anderson",
+      "photoUrl": "https://randomuser.me/api/portraits/women/7.jpg",
+      "department": "Customer Support",
+      "absenceDate": "2024-03-06",
+      "reason": "Sick Leave"
+    },
+    {
+      "id": 8,
+      "name": "William Taylor",
+      "photoUrl": "https://randomuser.me/api/portraits/men/8.jpg",
+      "department": "Product Management",
+      "absenceDate": "2024-03-05",
+      "reason": "Vacation"
+    },
+    {
+      "id": 9,
+      "name": "Emma Moore",
+      "photoUrl": "https://randomuser.me/api/portraits/women/9.jpg",
+      "department": "Legal",
+      "absenceDate": "2024-03-04",
+      "reason": "Court Appearance"
+    },
+    {
+      "id": 10,
+      "name": "James White",
+      "photoUrl": "https://randomuser.me/api/portraits/men/10.jpg",
+      "department": "IT",
+      "absenceDate": "2024-03-03",
+      "reason": "Parental Leave"
+    }
+  ]
+}

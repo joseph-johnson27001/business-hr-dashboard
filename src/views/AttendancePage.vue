@@ -2,8 +2,8 @@
   <div class="attendance-page">
     <LoadingSpinner v-if="isLoading" />
 
-    <div v-else>
-      <!-- KPI Cards -->
+    <div v-else class="main-content">
+      <!-- KPI Cards Section -->
       <div class="kpi-container">
         <KPICard
           v-for="(kpi, index) in kpis"
@@ -15,7 +15,12 @@
         />
       </div>
 
-      <!-- Additional Attendance Data (e.g., graphs) can go here -->
+      <!-- Attendance Table inside InfoCard -->
+      <div class="table-container">
+        <InfoCard title="Attendance Records">
+          <AttendanceTable :attendanceRecords="attendanceRecords" />
+        </InfoCard>
+      </div>
     </div>
   </div>
 </template>
@@ -23,13 +28,18 @@
 <script>
 import KPICard from "@/components/UI/KPICard.vue";
 import LoadingSpinner from "@/components/UI/LoadingSpinner.vue";
-import { fetchKPIData } from "@/api/attendancePage.js";
+import AttendanceTable from "@/components/Tables/AttendanceTable.vue";
+import InfoCard from "@/components/UI/InfoCard.vue";
+
+import { fetchKPIData, fetchTableData } from "@/api/attendancePage.js";
 
 export default {
   name: "AttendancePage",
   components: {
     KPICard,
     LoadingSpinner,
+    AttendanceTable,
+    InfoCard,
   },
   data() {
     return {
@@ -72,26 +82,41 @@ export default {
           key: "averageAbsenceDuration",
         },
       ],
+      attendanceRecords: [],
     };
   },
 
   created() {
-    fetchKPIData().then((kpiData) => {
-      this.kpis = this.kpis.map((kpi) => ({
-        ...kpi,
-        stat: kpiData[kpi.key],
-      }));
-      this.isLoading = false;
-    });
+    Promise.all([fetchKPIData(), fetchTableData()])
+      .then(([kpiData, tableData]) => {
+        this.kpis = this.kpis.map((kpi) => ({
+          ...kpi,
+          stat: kpiData[kpi.key],
+        }));
+        this.attendanceRecords = tableData.attendanceRecords;
+      })
+      .finally(() => {
+        this.isLoading = false;
+      });
   },
 };
 </script>
 
 <style scoped>
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .kpi-container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 10px;
+}
+
+.table-container {
+  margin-top: 10px;
 }
 
 @media (max-width: 1400px) {
