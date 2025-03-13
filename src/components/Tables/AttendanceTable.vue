@@ -35,7 +35,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="record in paginatedRecords" :key="record.id">
+          <tr
+            v-for="record in paginatedRecords"
+            :key="record.id"
+            @click="navigateToUser"
+          >
             <td>
               <div class="employee-name-container">
                 <img
@@ -143,6 +147,9 @@ export default {
     },
   },
   methods: {
+    navigateToUser() {
+      this.$router.push(`/employee`);
+    },
     formatDate(date) {
       const options = { year: "numeric", month: "short", day: "numeric" };
       return new Date(date).toLocaleDateString("en-US", options);
