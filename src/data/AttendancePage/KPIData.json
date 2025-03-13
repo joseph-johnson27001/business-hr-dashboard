@@ -1,7 +1,8 @@
 {
   "absenteeismRate": "5.2%",
-  "absencesToday": 4,
-  "absencesThisMonth": 32,
-  "lateArrivalsToday": 3,
-  "lateArrivalsThisMonth": 18
+  "absencesToday": 3,
+  "absencesThisMonth": 45,
+  "lateArrivalsToday": 7,
+  "lateArrivalsThisMonth": 30,
+  "averageAbsenceDuration": "2.4 days"
 }
