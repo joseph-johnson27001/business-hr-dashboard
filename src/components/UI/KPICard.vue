@@ -69,7 +69,7 @@ export default {
 }
 
 .stat-value {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   color: #006ba6;
   text-align: left;
