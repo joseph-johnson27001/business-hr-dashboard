@@ -25,10 +25,23 @@
       <div class="graphs-container">
         <!-- Total Absences Graph -->
         <GraphContainerCard
-          title="Late Attendance"
+          title="Total Absences"
           @timeframe-changed="onTimeframeChanged"
         >
           <TotalAbsencesGraph
+            v-if="graphData.totalAbsences"
+            :labels="
+              graphData.totalAbsences[timeframes['Total Absences']].labels
+            "
+            :data="graphData.totalAbsences[timeframes['Total Absences']].data"
+          />
+        </GraphContainerCard>
+        <!-- Late Attendance Graph -->
+        <GraphContainerCard
+          title="Late Attendance"
+          @timeframe-changed="onTimeframeChanged"
+        >
+          <LateAttendanceGraph
             v-if="graphData.lateAttendance"
             :labels="
               graphData.lateAttendance[timeframes['Late Attendance']].labels
@@ -48,6 +61,7 @@ import AttendanceTable from "@/components/Tables/AttendanceTable.vue";
 import InfoCard from "@/components/UI/InfoCard.vue";
 import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
 import TotalAbsencesGraph from "@/components/Graphs/AttendancePage/TotalAbsencesGraph.vue";
+import LateAttendanceGraph from "@/components/Graphs/AttendancePage/LateAttendanceGraph.vue";
 
 import {
   fetchKPIData,
@@ -64,6 +78,7 @@ export default {
     InfoCard,
     GraphContainerCard,
     TotalAbsencesGraph,
+    LateAttendanceGraph,
   },
   data() {
     return {
@@ -107,8 +122,10 @@ export default {
         },
       ],
       attendanceRecords: [],
+      totalAbsences: [],
       timeframes: {
         "Late Attendance": "monthly",
+        "Total Absences": "monthly",
       },
     };
   },
@@ -126,6 +143,7 @@ export default {
           stat: kpiData[kpi.key],
         }));
         this.attendanceRecords = tableData.attendanceRecords;
+        this.totalAbsences = tableData.totalAbsences;
         this.graphData = graphData;
         console.log(this.graphData);
       })
