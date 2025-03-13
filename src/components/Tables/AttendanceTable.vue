@@ -311,7 +311,7 @@ export default {
   cursor: not-allowed;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 700px) {
   .table-controls {
     flex-direction: column;
     align-items: stretch;
