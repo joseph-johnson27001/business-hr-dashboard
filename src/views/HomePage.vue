@@ -174,7 +174,6 @@ export default {
       }
     );
   },
-
   methods: {
     onTimeframeChanged({ title, selectedOption }) {
       this.timeframes[title] = selectedOption.toLowerCase();

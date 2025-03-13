@@ -21,6 +21,22 @@
           <AttendanceTable :attendanceRecords="attendanceRecords" />
         </InfoCard>
       </div>
+
+      <div class="graphs-container">
+        <!-- Total Absences Graph -->
+        <GraphContainerCard
+          title="Late Attendance"
+          @timeframe-changed="onTimeframeChanged"
+        >
+          <TotalAbsencesGraph
+            v-if="graphData.lateAttendance"
+            :labels="
+              graphData.lateAttendance[timeframes['Late Attendance']].labels
+            "
+            :data="graphData.lateAttendance[timeframes['Late Attendance']].data"
+          />
+        </GraphContainerCard>
+      </div>
     </div>
   </div>
 </template>
@@ -30,8 +46,14 @@ import KPICard from "@/components/UI/KPICard.vue";
 import LoadingSpinner from "@/components/UI/LoadingSpinner.vue";
 import AttendanceTable from "@/components/Tables/AttendanceTable.vue";
 import InfoCard from "@/components/UI/InfoCard.vue";
+import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
+import TotalAbsencesGraph from "@/components/Graphs/AttendancePage/TotalAbsencesGraph.vue";
 
-import { fetchKPIData, fetchTableData } from "@/api/attendancePage.js";
+import {
+  fetchKPIData,
+  fetchTableData,
+  fetchGraphData,
+} from "@/api/attendancePage.js";
 
 export default {
   name: "AttendancePage",
@@ -40,6 +62,8 @@ export default {
     LoadingSpinner,
     AttendanceTable,
     InfoCard,
+    GraphContainerCard,
+    TotalAbsencesGraph,
   },
   data() {
     return {
@@ -83,17 +107,27 @@ export default {
         },
       ],
       attendanceRecords: [],
+      timeframes: {
+        "Late Attendance": "monthly",
+      },
     };
+  },
+  methods: {
+    onTimeframeChanged({ title, selectedOption }) {
+      this.timeframes[title] = selectedOption.toLowerCase();
+    },
   },
 
   created() {
-    Promise.all([fetchKPIData(), fetchTableData()])
-      .then(([kpiData, tableData]) => {
+    Promise.all([fetchKPIData(), fetchTableData(), fetchGraphData()])
+      .then(([kpiData, tableData, graphData]) => {
         this.kpis = this.kpis.map((kpi) => ({
           ...kpi,
           stat: kpiData[kpi.key],
         }));
         this.attendanceRecords = tableData.attendanceRecords;
+        this.graphData = graphData;
+        console.log(this.graphData);
       })
       .finally(() => {
         this.isLoading = false;
@@ -116,6 +150,13 @@ export default {
 }
 
 .table-container {
+  margin-top: 10px;
+}
+
+.graphs-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
   margin-top: 10px;
 }
 
