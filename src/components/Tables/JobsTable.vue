@@ -38,11 +38,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr
-            v-for="job in paginatedJobs"
-            :key="job.id"
-            @click="goToJobDetails(job.id)"
-          >
+          <tr v-for="job in paginatedJobs" :key="job.id">
             <td>{{ job.title }}</td>
             <td>{{ job.department }}</td>
             <td>{{ job.location }}</td>
@@ -66,12 +62,7 @@
 
     <!-- Stacked Cards Layout (Visible on Mobile) -->
     <div v-if="isMobile" class="job-cards">
-      <div
-        v-for="job in paginatedJobs"
-        :key="job.id"
-        class="job-card"
-        @click="goToJobDetails(job.id)"
-      >
+      <div v-for="job in paginatedJobs" :key="job.id" class="job-card">
         <h3 class="job-title">{{ job.title }}</h3>
         <p><span class="job-stat">Department:</span> {{ job.department }}</p>
         <p><span class="job-stat">Location:</span> {{ job.location }}</p>
@@ -128,12 +119,16 @@ export default {
     },
     filteredJobs() {
       return this.jobListings.filter((job) => {
-        const matchesSearch = job.title
-          .toLowerCase()
-          .includes(this.searchQuery.toLowerCase());
+        const query = this.searchQuery.toLowerCase();
+        const matchesSearch =
+          job.title.toLowerCase().includes(query) ||
+          job.department.toLowerCase().includes(query) ||
+          job.location.toLowerCase().includes(query);
+
         const matchesDepartment = this.selectedDepartment
           ? job.department === this.selectedDepartment
           : true;
+
         return matchesSearch && matchesDepartment;
       });
     },
@@ -146,9 +141,6 @@ export default {
     },
   },
   methods: {
-    goToJobDetails(jobId) {
-      this.$router.push(`/jobs/${jobId}`);
-    },
     formatDate(date) {
       return new Date(date).toLocaleDateString("en-US", {
         year: "numeric",
