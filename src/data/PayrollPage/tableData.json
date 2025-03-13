@@ -8,7 +8,7 @@
       "bonus": 500,
       "deductions": 200,
       "netPay": 6300,
-      "photoUrl": "images/ProfilePhoto1.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/1.jpg"
     },
     {
       "id": 2,
@@ -18,7 +18,7 @@
       "bonus": 1000,
       "deductions": 300,
       "netPay": 8200,
-      "photoUrl": "images/ProfilePhoto2.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/2.jpg"
     },
     {
       "id": 3,
@@ -28,7 +28,7 @@
       "bonus": 300,
       "deductions": 150,
       "netPay": 5650,
-      "photoUrl": "images/ProfilePhoto3.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/3.jpg"
     },
     {
       "id": 4,
@@ -38,7 +38,7 @@
       "bonus": 400,
       "deductions": 250,
       "netPay": 6350,
-      "photoUrl": "images/ProfilePhoto1.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/4.jpg"
     },
     {
       "id": 5,
@@ -48,7 +48,7 @@
       "bonus": 600,
       "deductions": 350,
       "netPay": 7450,
-      "photoUrl": "images/ProfilePhoto2.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/5.jpg"
     },
     {
       "id": 6,
@@ -58,7 +58,7 @@
       "bonus": 700,
       "deductions": 400,
       "netPay": 7100,
-      "photoUrl": "images/ProfilePhoto3.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/6.jpg"
     },
     {
       "id": 7,
@@ -68,7 +68,7 @@
       "bonus": 900,
       "deductions": 450,
       "netPay": 8450,
-      "photoUrl": "images/ProfilePhoto1.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/7.jpg"
     },
     {
       "id": 8,
@@ -78,7 +78,7 @@
       "bonus": 1200,
       "deductions": 500,
       "netPay": 10200,
-      "photoUrl": "images/ProfilePhoto2.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/8.jpg"
     },
     {
       "id": 9,
@@ -88,7 +88,7 @@
       "bonus": 250,
       "deductions": 100,
       "netPay": 5750,
-      "photoUrl": "images/ProfilePhoto3.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/9.jpg"
     },
     {
       "id": 10,
@@ -98,7 +98,7 @@
       "bonus": 800,
       "deductions": 350,
       "netPay": 7150,
-      "photoUrl": "images/ProfilePhoto1.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/10.jpg"
     },
     {
       "id": 11,
@@ -108,7 +108,7 @@
       "bonus": 500,
       "deductions": 300,
       "netPay": 7600,
-      "photoUrl": "images/ProfilePhoto2.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/11.jpg"
     },
     {
       "id": 12,
@@ -118,7 +118,7 @@
       "bonus": 650,
       "deductions": 300,
       "netPay": 7050,
-      "photoUrl": "images/ProfilePhoto3.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/12.jpg"
     },
     {
       "id": 13,
@@ -128,7 +128,7 @@
       "bonus": 350,
       "deductions": 250,
       "netPay": 5900,
-      "photoUrl": "images/ProfilePhoto1.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/13.jpg"
     },
     {
       "id": 14,
@@ -138,7 +138,7 @@
       "bonus": 1000,
       "deductions": 450,
       "netPay": 8650,
-      "photoUrl": "images/ProfilePhoto2.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/14.jpg"
     },
     {
       "id": 15,
@@ -148,7 +148,7 @@
       "bonus": 200,
       "deductions": 150,
       "netPay": 5650,
-      "photoUrl": "images/ProfilePhoto3.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/15.jpg"
     }
   ]
 }

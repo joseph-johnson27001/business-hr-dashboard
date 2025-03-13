@@ -14,7 +14,7 @@
       </div>
       <i class="fas fa-bell notification-icon"></i>
       <img
-        src="images/ProfilePhoto2.jpg"
+        src="https://randomuser.me/api/portraits/men/1.jpg"
         alt="User Profile"
         class="profile-image"
       />

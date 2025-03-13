@@ -63,7 +63,7 @@ export default {
         status: "Active",
         location: "New York",
         birthday: "1992-07-15",
-        photo: "images/ProfilePhoto2.jpg",
+        photo: "https://randomuser.me/api/portraits/men/1.jpg",
       },
       graphData: {
         performance: { labels: [], data: [] },

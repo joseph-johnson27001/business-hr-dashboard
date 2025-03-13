@@ -8,7 +8,7 @@
       "location": "New York",
       "joinDate": "2021-06-15",
       "department": "Engineering",
-      "photoUrl": "images/ProfilePhoto1.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/1.jpg"
     },
     {
       "id": 2,
@@ -18,7 +18,7 @@
       "location": "Los Angeles",
       "joinDate": "2020-08-01",
       "department": "Human Resources",
-      "photoUrl": "images/ProfilePhoto2.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/2.jpg"
     },
     {
       "id": 3,
@@ -28,7 +28,7 @@
       "location": "Chicago",
       "joinDate": "2022-02-20",
       "department": "Marketing",
-      "photoUrl": "images/ProfilePhoto3.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/3.jpg"
     },
     {
       "id": 4,
@@ -38,7 +38,7 @@
       "location": "San Francisco",
       "joinDate": "2019-03-10",
       "department": "Engineering",
-      "photoUrl": "images/ProfilePhoto4.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/4.jpg"
     },
     {
       "id": 5,
@@ -48,7 +48,7 @@
       "location": "Austin",
       "joinDate": "2021-11-23",
       "department": "Product",
-      "photoUrl": "images/ProfilePhoto1.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/5.jpg"
     },
     {
       "id": 6,
@@ -58,7 +58,7 @@
       "location": "Miami",
       "joinDate": "2022-01-15",
       "department": "Human Resources",
-      "photoUrl": "images/ProfilePhoto2.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/6.jpg"
     },
     {
       "id": 7,
@@ -68,7 +68,7 @@
       "location": "Denver",
       "joinDate": "2020-07-30",
       "department": "Design",
-      "photoUrl": "images/ProfilePhoto3.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/7.jpg"
     },
     {
       "id": 8,
@@ -78,7 +78,7 @@
       "location": "Los Angeles",
       "joinDate": "2021-02-18",
       "department": "Marketing",
-      "photoUrl": "images/ProfilePhoto4.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/8.jpg"
     },
     {
       "id": 9,
@@ -88,7 +88,7 @@
       "location": "Chicago",
       "joinDate": "2018-10-05",
       "department": "Design",
-      "photoUrl": "images/ProfilePhoto1.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/9.jpg"
     },
     {
       "id": 10,
@@ -98,7 +98,7 @@
       "location": "New York",
       "joinDate": "2021-04-11",
       "department": "Engineering",
-      "photoUrl": "images/ProfilePhoto2.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/10.jpg"
     },
     {
       "id": 11,
@@ -108,7 +108,7 @@
       "location": "San Francisco",
       "joinDate": "2022-03-01",
       "department": "Sales",
-      "photoUrl": "images/ProfilePhoto3.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/11.jpg"
     },
     {
       "id": 12,
@@ -118,7 +118,7 @@
       "location": "Los Angeles",
       "joinDate": "2020-09-25",
       "department": "Sales",
-      "photoUrl": "images/ProfilePhoto4.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/12.jpg"
     },
     {
       "id": 13,
@@ -128,7 +128,7 @@
       "location": "Miami",
       "joinDate": "2019-05-30",
       "department": "Product",
-      "photoUrl": "images/ProfilePhoto1.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/13.jpg"
     },
     {
       "id": 14,
@@ -138,7 +138,7 @@
       "location": "Austin",
       "joinDate": "2022-01-05",
       "department": "Engineering",
-      "photoUrl": "images/ProfilePhoto2.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/14.jpg"
     },
     {
       "id": 15,
@@ -148,7 +148,7 @@
       "location": "Denver",
       "joinDate": "2020-06-28",
       "department": "Data",
-      "photoUrl": "images/ProfilePhoto3.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/15.jpg"
     },
     {
       "id": 16,
@@ -158,7 +158,7 @@
       "location": "Chicago",
       "joinDate": "2021-09-10",
       "department": "Finance",
-      "photoUrl": "images/ProfilePhoto4.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/16.jpg"
     },
     {
       "id": 17,
@@ -168,7 +168,7 @@
       "location": "San Francisco",
       "joinDate": "2022-05-20",
       "department": "Operations",
-      "photoUrl": "images/ProfilePhoto1.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/17.jpg"
     },
     {
       "id": 18,
@@ -178,7 +178,7 @@
       "location": "Miami",
       "joinDate": "2019-07-15",
       "department": "Support",
-      "photoUrl": "images/ProfilePhoto2.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/18.jpg"
     },
     {
       "id": 19,
@@ -188,7 +188,7 @@
       "location": "Los Angeles",
       "joinDate": "2020-12-22",
       "department": "Support",
-      "photoUrl": "images/ProfilePhoto3.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/women/19.jpg"
     },
     {
       "id": 20,
@@ -198,7 +198,7 @@
       "location": "Chicago",
       "joinDate": "2018-04-12",
       "department": "Legal",
-      "photoUrl": "images/ProfilePhoto4.jpg"
+      "photoUrl": "https://randomuser.me/api/portraits/men/20.jpg"
     }
   ]
 }
