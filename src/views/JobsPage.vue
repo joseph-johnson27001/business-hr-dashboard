@@ -3,7 +3,7 @@
     <LoadingSpinner v-if="isLoading" />
     <div v-else class="jobs-page">
       <div class="table-container">
-        <InfoCard title="Active Jobs">
+        <InfoCard title="Job Recruitment">
           <JobsTable v-if="jobs.length" :jobListings="jobs" />
           <p v-else>No job listings available.</p>
         </InfoCard>
