@@ -56,8 +56,4 @@ export default {
   flex-direction: column;
   gap: 10px;
 }
-
-.table-container {
-  margin-top: 20px;
-}
 </style>
