@@ -26,6 +26,10 @@
             <i class="fas fa-building"></i>
             <span v-show="textVisible">Attendance</span>
           </li>
+          <li @click="goTo('/jobs')">
+            <i class="fas fa-briefcase"></i>
+            <span v-show="textVisible">Jobs</span>
+          </li>
         </div>
         <li @click="goTo('')" style="margin-top: auto">
           <i class="fas fa-sign-out-alt"></i>
@@ -134,6 +138,10 @@ i {
 
 .fas.fa-building {
   color: #4caf50;
+}
+
+.fas.fa-briefcase {
+  color: #ff9800;
 }
 
 .fas.fa-sign-out-alt {

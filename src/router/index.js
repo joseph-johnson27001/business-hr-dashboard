@@ -5,6 +5,7 @@ import Employees from "@/views/EmployeesPage.vue";
 import Payroll from "@/views/PayrollPage.vue";
 import Attendance from "@/views/AttendancePage.vue";
 import Employee from "@/views/EmployeePage.vue";
+import Jobs from "@/views/JobsPage.vue";
 
 // Define the routes
 const routes = [
@@ -32,6 +33,11 @@ const routes = [
     path: "/employee",
     name: "Employee",
     component: Employee,
+  },
+  {
+    path: "/jobs",
+    name: "Jobs",
+    component: Jobs,
   },
 ];
 
