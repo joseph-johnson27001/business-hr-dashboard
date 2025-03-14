@@ -70,7 +70,7 @@ export default {
   border-radius: 4px;
   font-size: 14px;
   margin-right: 10px;
-  background-color: #fefefe;
+  background-color: #f6f6fb;
   font-family: "Assistant";
 }
 
