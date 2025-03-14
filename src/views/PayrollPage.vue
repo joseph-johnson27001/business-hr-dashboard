@@ -33,7 +33,7 @@
           title="Average Salary"
           @timeframe-changed="onTimeframeChanged"
         >
-          <AverageSalarayGraph
+          <AveragesalaryGraph
             v-if="graphData.salaryExpenditure"
             :labels="
               graphData.salaryExpenditure[timeframes['Average Salary']].labels
@@ -66,7 +66,7 @@ import {
 } from "@/api/payrollPage";
 import LoadingSpinner from "@/components/UI/LoadingSpinner.vue";
 import PayrollGraph from "@/components/Graphs/PayrollPage/PayrollGraph.vue";
-import AverageSalarayGraph from "@/components/Graphs/PayrollPage/AverageSalarayGraph.vue";
+import AveragesalaryGraph from "@/components/Graphs/PayrollPage/AverageSalaryGraph.vue";
 
 export default {
   components: {
@@ -76,7 +76,7 @@ export default {
     InfoCard,
     LoadingSpinner,
     PayrollGraph,
-    AverageSalarayGraph,
+    AveragesalaryGraph,
   },
   data() {
     return {

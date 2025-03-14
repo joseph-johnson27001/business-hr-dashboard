@@ -121,28 +121,16 @@
           />
         </GraphContainerCard>
 
-        <!-- <GraphContainerCard
-          title="Absenteeism"
-          @timeframe-changed="onTimeframeChanged"
-        >
-          <TotalAbsencesGraph
-            v-if="graphData.absenteeism"
-            :labels="graphData.absenteeism[timeframes.absenteeism].labels"
-            :data="graphData.absenteeism[timeframes.absenteeism].data"
-          />
-        </GraphContainerCard>
-
- 
         <GraphContainerCard
-          title="Payroll"
+          title="Salary"
           @timeframe-changed="onTimeframeChanged"
         >
           <PayrollGraph
-            v-if="graphData.payroll"
-            :labels="graphData.payroll[timeframes.payroll].labels"
-            :data="graphData.payroll[timeframes.payroll].data"
+            v-if="graphData.totalPayroll"
+            :labels="graphData.totalPayroll[timeframes['Salary']].labels"
+            :data="graphData.totalPayroll[timeframes['Salary']].data"
           />
-        </GraphContainerCard>  -->
+        </GraphContainerCard>
       </div>
     </div>
   </div>
@@ -157,7 +145,7 @@ import KPICard from "@/components/UI/KPICard.vue";
 import EmployeePerformanceGraph from "@/components/Graphs/EmployeePage/EmployeePerformanceGraph.vue";
 import EmployeeSatisfactionGraph from "@/components/Graphs/EmployeePage/EmployeeSatisfactionGraph.vue";
 import TotalAbsencesGraph from "@/components/Graphs/EmployeePage/TotalAbsencesGraph.vue";
-// import PayrollGraph from "@/components/Graphs/EmployeePage/PayrollGraph.vue";
+import PayrollGraph from "@/components/Graphs/EmployeePage/PayrollGraph.vue";
 
 import {
   fetchEmploymentData,
@@ -174,7 +162,7 @@ export default {
     EmployeePerformanceGraph,
     EmployeeSatisfactionGraph,
     TotalAbsencesGraph,
-    // PayrollGraph,
+    PayrollGraph,
   },
 
   data() {
@@ -187,6 +175,7 @@ export default {
         "Employee Satisfaction": "monthly",
         "Total Absences": "monthly",
         "Employee Performance": "monthly",
+        Salary: "monthly",
       },
     };
   },
