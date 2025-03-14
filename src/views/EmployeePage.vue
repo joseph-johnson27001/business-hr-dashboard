@@ -3,34 +3,56 @@
     <LoadingSpinner v-if="isLoading" />
 
     <div v-else class="employee-page">
-      <!-- Employee Overview -->
-      <EmployeeOverviewCard :employee="employee" />
+      <div class="top-container">
+        <!-- Employee Overview -->
+        <EmployeeOverviewCard :employee="employee" />
+      </div>
+
+      <!-- KPI Section -->
+      <div class="kpi-container">
+        <KPICard
+          icon="fas fa-dollar-sign"
+          :stat="'£' + kpiData.monthlySalary"
+          title="Monthly Salary"
+          color="#4CAF50"
+        />
+        <KPICard
+          icon="fas fa-money-bill-wave"
+          :stat="'£' + kpiData.yearlySalary"
+          title="Yearly Salary"
+          color="#2196F3"
+        />
+        <KPICard
+          icon="fas fa-gift"
+          :stat="'£' + kpiData.bonus"
+          title="Bonus"
+          color="#FF9800"
+        />
+        <KPICard
+          icon="fas fa-calendar"
+          :stat="kpiData.yearsAtCompany + ' years'"
+          title="Years at Company"
+          color="#9C27B0"
+        />
+        <KPICard
+          icon="fas fa-user-clock"
+          :stat="kpiData.absenteeismRate + '%'"
+          title="Absenteeism Rate"
+          color="#E91E63"
+        />
+        <KPICard
+          icon="fas fa-briefcase"
+          :stat="kpiData.remainingHolidayDays"
+          title="Remaining Holiday Days"
+          color="#795548"
+        />
+      </div>
 
       <!-- Graph Section -->
       <div class="graphs-container">
-        <!-- <GraphContainerCard title="Performance Over Time">
-          <EmployeePerformanceGraph
-            v-if="graphData.performance"
-            :labels="graphData.performance.labels"
-            :data="graphData.performance.data"
-          />
-        </GraphContainerCard>
-
-        <GraphContainerCard title="Absenteeism Rate">
-          <AbsenteeismGraph
-            v-if="graphData.absenteeism"
-            :labels="graphData.absenteeism.labels"
-            :data="graphData.absenteeism.data"
-          />
-        </GraphContainerCard>
-
-        <GraphContainerCard title="Satisfaction Over Time">
-          <EmployeeSatisfactionGraph
-            v-if="graphData.satisfaction"
-            :labels="graphData.satisfaction.labels"
-            :data="graphData.satisfaction.data"
-          />
-        </GraphContainerCard> -->
+        <GraphContainerCard title="Performance"> </GraphContainerCard>
+        <GraphContainerCard title="Satisfaction"> </GraphContainerCard>
+        <GraphContainerCard title="Absenteeism"> </GraphContainerCard>
       </div>
     </div>
   </div>
@@ -38,33 +60,25 @@
 
 <script>
 import EmployeeOverviewCard from "@/components/UI/EmployeeOverviewCard.vue";
-// import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
-// import EmployeePerformanceGraph from "@/components/Graphs/EmployeePage/EmployeePerformanceGraph.vue";
-// import AbsenteeismGraph from "@/components/Graphs/EmployeePage/AbsenteeismGraph.vue";
-// import EmployeeSatisfactionGraph from "@/components/Graphs/EmployeePage/EmployeeSatisfactionGraph.vue";
+import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
 import LoadingSpinner from "@/components/UI/LoadingSpinner.vue";
+import KPICard from "@/components/UI/KPICard.vue";
+
+import { fetchEmploymentData, fetchKPIData } from "@/api/employeePage.js";
 
 export default {
   components: {
     EmployeeOverviewCard,
-    // GraphContainerCard,
-    // EmployeePerformanceGraph,
-    // AbsenteeismGraph,
-    // EmployeeSatisfactionGraph,
+    GraphContainerCard,
     LoadingSpinner,
+    KPICard,
   },
 
   data() {
     return {
       isLoading: true,
-      employee: {
-        name: "John Doe",
-        position: "Software Engineer",
-        status: "Active",
-        location: "New York",
-        birthday: "1992-07-15",
-        photo: "https://randomuser.me/api/portraits/men/1.jpg",
-      },
+      employee: null,
+      kpiData: null,
       graphData: {
         performance: { labels: [], data: [] },
         absenteeism: { labels: [], data: [] },
@@ -73,10 +87,19 @@ export default {
     };
   },
 
-  created() {
-    setTimeout(() => {
+  async created() {
+    try {
+      const [employee, kpiData] = await Promise.all([
+        fetchEmploymentData(),
+        fetchKPIData(),
+      ]);
+      this.employee = employee;
+      this.kpiData = kpiData;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
       this.isLoading = false;
-    }, 250);
+    }
   },
 };
 </script>
@@ -85,7 +108,18 @@ export default {
 .employee-page {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
+}
+
+.top-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.kpi-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
 }
 
 .graphs-container {
@@ -94,8 +128,23 @@ export default {
   gap: 10px;
 }
 
+@media (max-width: 1200px) {
+  .kpi-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 800px) {
   .graphs-container {
+    grid-template-columns: 1fr;
+  }
+  .kpi-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .kpi-container {
     grid-template-columns: 1fr;
   }
 }
