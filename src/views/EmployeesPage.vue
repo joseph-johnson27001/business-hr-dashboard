@@ -107,7 +107,7 @@ import {
   fetchTableData,
   fetchEmployeeKPIs,
   fetchGraphData,
-} from "@/api/employeePage.js";
+} from "@/api/employeesPage.js";
 import LoadingSpinner from "@/components/UI/LoadingSpinner.vue";
 import KPICard from "@/components/UI/KPICard.vue";
 
