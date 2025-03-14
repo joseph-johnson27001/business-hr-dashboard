@@ -6,6 +6,29 @@
       <div class="top-container">
         <!-- Employee Overview -->
         <EmployeeOverviewCard :employee="employee" />
+
+        <!-- KPI Cards -->
+        <KPICard
+          icon="fas fa-phone"
+          :stat="kpiData.contact.phone"
+          title="Phone"
+          color="#4CAF50"
+          style="margin-top: auto"
+        />
+        <KPICard
+          icon="fa fa-envelope"
+          :stat="kpiData.contact.email"
+          title="Email"
+          color="#2196F3"
+          style="margin-top: auto"
+        />
+        <KPICard
+          icon="fas fa-chart-line"
+          :stat="kpiData.performanceScores['2024-Q4'] + '%'"
+          title="Performance Score"
+          color="#FF9800"
+          style="margin-top: auto"
+        />
       </div>
 
       <!-- KPI Section -->
@@ -113,7 +136,8 @@ export default {
 
 .top-container {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 
 .kpi-container {

@@ -23,5 +23,9 @@
     "January": 12,
     "February": 15,
     "March": 10
+  },
+  "contact": {
+    "phone": "0123456789",
+    "email": "info@info.com"
   }
 }
