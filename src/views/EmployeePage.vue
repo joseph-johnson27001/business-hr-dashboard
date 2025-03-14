@@ -190,9 +190,6 @@ export default {
       this.employee = employee;
       this.kpiData = kpiData;
       this.graphData = graphData;
-
-      // Log the graph data to check its structure
-      console.log("Graph Data:", this.graphData);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -207,7 +204,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 .employee-page {
   display: flex;
@@ -234,17 +230,26 @@ export default {
 }
 
 @media (max-width: 1200px) {
+  .top-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .kpi-container {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 800px) {
-  .graphs-container {
+  .top-container {
     grid-template-columns: 1fr;
   }
+
   .kpi-container {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .graphs-container {
+    grid-template-columns: 1fr;
   }
 }
 
