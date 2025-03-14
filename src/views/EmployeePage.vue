@@ -73,9 +73,76 @@
 
       <!-- Graph Section -->
       <div class="graphs-container">
-        <GraphContainerCard title="Performance"> </GraphContainerCard>
-        <GraphContainerCard title="Satisfaction"> </GraphContainerCard>
-        <GraphContainerCard title="Absenteeism"> </GraphContainerCard>
+        <GraphContainerCard
+          title="Performance"
+          @timeframe-changed="onTimeframeChanged"
+        >
+          <EmployeePerformanceGraph
+            v-if="graphData.employeePerformance"
+            :labels="
+              graphData.employeePerformance[timeframes['Employee Performance']]
+                .labels
+            "
+            :data="
+              graphData.employeePerformance[timeframes['Employee Performance']]
+                .data
+            "
+          />
+        </GraphContainerCard>
+
+        <GraphContainerCard
+          title="Satisfaction"
+          @timeframe-changed="onTimeframeChanged"
+        >
+          <EmployeeSatisfactionGraph
+            v-if="graphData.employeeSatisfaction"
+            :labels="
+              graphData.employeeSatisfaction[
+                timeframes['Employee Satisfaction']
+              ].labels
+            "
+            :data="
+              graphData.employeeSatisfaction[
+                timeframes['Employee Satisfaction']
+              ].data
+            "
+          />
+        </GraphContainerCard>
+        <GraphContainerCard
+          title="Total Absences"
+          @timeframe-changed="onTimeframeChanged"
+        >
+          <TotalAbsencesGraph
+            v-if="graphData.totalAbsences"
+            :labels="
+              graphData.totalAbsences[timeframes['Total Absences']].labels
+            "
+            :data="graphData.totalAbsences[timeframes['Total Absences']].data"
+          />
+        </GraphContainerCard>
+
+        <!-- <GraphContainerCard
+          title="Absenteeism"
+          @timeframe-changed="onTimeframeChanged"
+        >
+          <TotalAbsencesGraph
+            v-if="graphData.absenteeism"
+            :labels="graphData.absenteeism[timeframes.absenteeism].labels"
+            :data="graphData.absenteeism[timeframes.absenteeism].data"
+          />
+        </GraphContainerCard>
+
+ 
+        <GraphContainerCard
+          title="Payroll"
+          @timeframe-changed="onTimeframeChanged"
+        >
+          <PayrollGraph
+            v-if="graphData.payroll"
+            :labels="graphData.payroll[timeframes.payroll].labels"
+            :data="graphData.payroll[timeframes.payroll].data"
+          />
+        </GraphContainerCard>  -->
       </div>
     </div>
   </div>
@@ -87,7 +154,16 @@ import GraphContainerCard from "@/components/UI/GraphContainerCard.vue";
 import LoadingSpinner from "@/components/UI/LoadingSpinner.vue";
 import KPICard from "@/components/UI/KPICard.vue";
 
-import { fetchEmploymentData, fetchKPIData } from "@/api/employeePage.js";
+import EmployeePerformanceGraph from "@/components/Graphs/EmployeePage/EmployeePerformanceGraph.vue";
+import EmployeeSatisfactionGraph from "@/components/Graphs/EmployeePage/EmployeeSatisfactionGraph.vue";
+import TotalAbsencesGraph from "@/components/Graphs/EmployeePage/TotalAbsencesGraph.vue";
+// import PayrollGraph from "@/components/Graphs/EmployeePage/PayrollGraph.vue";
+
+import {
+  fetchEmploymentData,
+  fetchKPIData,
+  fetchGraphData,
+} from "@/api/employeePage.js";
 
 export default {
   components: {
@@ -95,6 +171,10 @@ export default {
     GraphContainerCard,
     LoadingSpinner,
     KPICard,
+    EmployeePerformanceGraph,
+    EmployeeSatisfactionGraph,
+    TotalAbsencesGraph,
+    // PayrollGraph,
   },
 
   data() {
@@ -102,27 +182,39 @@ export default {
       isLoading: true,
       employee: null,
       kpiData: null,
-      graphData: {
-        performance: { labels: [], data: [] },
-        absenteeism: { labels: [], data: [] },
-        satisfaction: { labels: [], data: [] },
+      graphData: {},
+      timeframes: {
+        "Employee Satisfaction": "monthly",
+        "Total Absences": "monthly",
+        "Employee Performance": "monthly",
       },
     };
   },
 
   async created() {
     try {
-      const [employee, kpiData] = await Promise.all([
+      const [employee, kpiData, graphData] = await Promise.all([
         fetchEmploymentData(),
         fetchKPIData(),
+        fetchGraphData(),
       ]);
       this.employee = employee;
       this.kpiData = kpiData;
+      this.graphData = graphData;
+
+      // Log the graph data to check its structure
+      console.log("Graph Data:", this.graphData);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
       this.isLoading = false;
     }
+  },
+
+  methods: {
+    onTimeframeChanged({ title, selectedOption }) {
+      this.timeframes[title] = selectedOption.toLowerCase();
+    },
   },
 };
 </script>
