@@ -6,7 +6,7 @@
     <div class="employee-info">
       <h2>{{ employee.name }}</h2>
       <p class="position">{{ employee.position }}</p>
-      <div class="details">
+      <!-- <div class="details">
         <span
           ><i class="fas fa-map-marker-alt"></i> {{ employee.location }}</span
         >
@@ -16,7 +16,7 @@
         <span :class="statusClass"
           ><i class="fas fa-circle"></i> {{ employee.status }}</span
         >
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -52,8 +52,8 @@ export default {
 }
 
 .profile-image img {
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
   margin-right: 15px;
@@ -65,7 +65,7 @@ export default {
 
 h2 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: #333;
 }
 
@@ -78,7 +78,7 @@ h2 {
 .details {
   display: flex;
   gap: 15px;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #777;
 }
 

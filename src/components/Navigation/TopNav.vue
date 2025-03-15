@@ -18,6 +18,7 @@
         src="https://randomuser.me/api/portraits/men/1.jpg"
         alt="User Profile"
         class="profile-image"
+        @click="navigateToUser"
       />
     </div>
   </div>
@@ -34,6 +35,9 @@ export default {
   methods: {
     handleSearch() {
       console.log("Searching for:", this.searchQuery);
+    },
+    navigateToUser() {
+      this.$router.push(`/employee`);
     },
   },
 };
@@ -88,6 +92,7 @@ export default {
 .user-profile {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .profile-image {
