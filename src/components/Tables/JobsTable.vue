@@ -5,7 +5,7 @@
       <input
         v-model="searchQuery"
         type="text"
-        placeholder="Search jobs..."
+        placeholder="Search"
         class="search-input"
       />
       <select v-model="selectedDepartment" class="department-filter">
