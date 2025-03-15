@@ -275,6 +275,7 @@ export default {
   background-color: orange;
   color: white;
 }
+
 .job-card:hover {
   cursor: pointer;
   background-color: #f5f5f5;

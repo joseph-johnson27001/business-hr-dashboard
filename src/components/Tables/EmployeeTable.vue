@@ -70,22 +70,16 @@
         class="employee-card"
         @click="navigateToUser"
       >
-        <div class="card-header">
-          <img
-            :src="employee.photoUrl"
-            alt="Profile Photo"
-            class="profile-photo"
-          />
-          <span class="employee-name">{{ employee.name }}</span>
+        <div
+          class="employee-status-mobile"
+          :class="getStatusClass(employee.status)"
+        >
+          {{ employee.status }}
         </div>
+
+        <h3 class="employee-name">{{ employee.name }}</h3>
         <p>
           <span class="employee-stat">Position:</span> {{ employee.position }}
-        </p>
-        <p>
-          <span class="employee-stat">Status:</span>
-          <span class="employee-stat" :class="getStatusClass(employee.status)">
-            {{ " " + employee.status }}</span
-          >
         </p>
         <p>
           <span class="employee-stat">Location:</span> {{ employee.location }}
@@ -171,9 +165,9 @@ export default {
     getStatusClass(status) {
       switch (status) {
         case "Active":
-          return "status-active";
+          return "active-status";
         case "On Leave":
-          return "status-on-leave";
+          return "on-leave-status";
         default:
           return "";
       }
@@ -239,6 +233,53 @@ export default {
   grid-template-columns: 1fr;
 }
 
+.employee-card {
+  background: white;
+  padding: 15px 10px;
+  border-bottom: 1px solid #ddd;
+  font-family: "Assistant", sans-serif;
+  position: relative; /* To position status in top right */
+}
+
+.employee-status-mobile {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 5px;
+  color: white;
+}
+
+.employee-status-mobile.active-status {
+  background-color: green;
+  color: white;
+}
+
+.employee-status-mobile.on-leave-status {
+  background-color: orange;
+  color: white;
+}
+
+.employee-card:hover {
+  cursor: pointer;
+  background-color: #f5f5f5;
+}
+
+.employee-name {
+  font-weight: 400;
+  color: #0a4d86;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  font-family: "Inter", sans-serif;
+}
+
+.employee-stat {
+  color: #0a4d86;
+  font-weight: 600;
+}
+
 .search-input {
   height: 25px;
   width: 100%;
@@ -267,26 +308,9 @@ export default {
   outline: none;
 }
 
-.employee-card {
-  background: white;
-  padding: 15px 10px;
-  border-bottom: 1px solid #ddd;
-  font-family: "Assistant", sans-serif;
-}
-
-.employee-card:hover {
-  cursor: pointer;
-  background-color: #f5f5f5;
-}
-
-.employee-stat {
-  color: #0a4d86;
-}
-
-.card-header {
+.employee-name-container {
   display: flex;
   align-items: center;
-  font-size: 1.1rem;
 }
 
 .profile-photo {
@@ -297,12 +321,22 @@ export default {
   margin-right: 5px;
 }
 
+.job-status-mobile.open-status {
+  background-color: green;
+  color: white;
+}
+
+.job-status-mobile.closed-status {
+  background-color: orange;
+  color: white;
+}
+
 /* Utility Styles */
-.status-active {
+.active-status {
   color: green;
 }
 
-.status-on-leave {
+.on-leave-status {
   color: orange;
 }
 
@@ -311,11 +345,6 @@ export default {
   justify-content: space-between;
   margin-bottom: 10px;
   gap: 10px;
-}
-
-.employee-name-container {
-  display: flex;
-  align-items: center;
 }
 
 /* Pagination */
