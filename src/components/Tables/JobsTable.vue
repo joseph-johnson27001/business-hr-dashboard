@@ -5,7 +5,7 @@
       <input
         v-model="searchQuery"
         type="text"
-        placeholder="Search"
+        placeholder="Search jobs..."
         class="search-input"
       />
       <select v-model="selectedDepartment" class="department-filter">
@@ -63,6 +63,16 @@
     <!-- Stacked Cards Layout (Visible on Mobile) -->
     <div v-if="isMobile" class="job-cards">
       <div v-for="job in paginatedJobs" :key="job.id" class="job-card">
+        <div
+          class="job-status-mobile"
+          :class="{
+            'open-status': job.status === 'Open',
+            'closed-status': job.status === 'Closed',
+          }"
+        >
+          {{ job.status }}
+        </div>
+
         <h3 class="job-title">{{ job.title }}</h3>
         <p><span class="job-stat">Department:</span> {{ job.department }}</p>
         <p><span class="job-stat">Location:</span> {{ job.location }}</p>
@@ -72,15 +82,6 @@
         </p>
         <p>
           <span class="job-stat">Deadline:</span> {{ formatDate(job.deadline) }}
-        </p>
-        <p
-          class="job-status"
-          :class="{
-            'open-status': job.status === 'Open',
-            'closed-status': job.status === 'Closed',
-          }"
-        >
-          {{ job.status }}
         </p>
       </div>
     </div>
@@ -207,10 +208,15 @@ export default {
 
 .job-title {
   font-weight: 400;
+  color: #0a4d86;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  font-family: "Inter", sans-serif;
 }
 
 .job-stat {
   color: #0a4d86;
+  font-weight: 600;
 }
 
 .search-input {
@@ -246,8 +252,29 @@ export default {
   padding: 15px 10px;
   border-bottom: 1px solid #ddd;
   font-family: "Assistant", sans-serif;
+  position: relative; /* To position status in top right */
 }
 
+.job-status-mobile {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  font-weight: 600;
+  font-size: 12px;
+  border-radius: 5px;
+  color: white;
+}
+
+.job-status-mobile.open-status {
+  background-color: green;
+  color: white;
+}
+
+.job-status-mobile.closed-status {
+  background-color: orange;
+  color: white;
+}
 .job-card:hover {
   cursor: pointer;
   background-color: #f5f5f5;
