@@ -2,7 +2,7 @@
   <div class="layout">
     <TopNav />
     <div class="main-content">
-      <SideBar />
+      <SideBar class="sidebar" />
       <div class="content">
         <router-view></router-view>
       </div>
@@ -26,11 +26,11 @@ export default {
 <style>
 body {
   margin: 0px !important;
-  scrollbar-width: none; /* Hide scrollbar (Firefox) */
+  scrollbar-width: none;
 }
 
 ::-webkit-scrollbar {
-  display: none; /* Hide scrollbar (Chrome, Safari, Edge) */
+  display: none;
 }
 </style>
 
@@ -59,5 +59,11 @@ body {
   flex: 1;
   padding: 15px;
   overflow-y: scroll;
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    display: none;
+  }
 }
 </style>
