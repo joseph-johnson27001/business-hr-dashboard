@@ -3,21 +3,29 @@
     <div v-if="isVisible" class="mobile-nav">
       <div class="close-btn" @click="closeMenu">&times;</div>
       <ul>
-        <li @click="navigateTo('/')"><i class="fas fa-home"></i> Home</li>
+        <li @click="navigateTo('/')">
+          <div class="icon-container"><i class="fas fa-home"></i></div>
+          Home
+        </li>
         <li @click="navigateTo('/employees')">
-          <i class="fas fa-users"></i> Employees
+          <div class="icon-container"><i class="fas fa-users"></i></div>
+          Employees
         </li>
         <li @click="navigateTo('/payroll')">
-          <i class="fas fa-chart-line"></i> Payroll
+          <div class="icon-container"><i class="fas fa-chart-line"></i></div>
+          Payroll
         </li>
         <li @click="navigateTo('/attendance')">
-          <i class="fas fa-building"></i> Attendance
+          <div class="icon-container"><i class="fas fa-building"></i></div>
+          Attendance
         </li>
         <li @click="navigateTo('/jobs')">
-          <i class="fas fa-briefcase"></i> Jobs
+          <div class="icon-container"><i class="fas fa-briefcase"></i></div>
+          Jobs
         </li>
         <li @click="navigateTo('')">
-          <i class="fas fa-sign-out-alt"></i> Logout
+          <div class="icon-container"><i class="fas fa-sign-out-alt"></i></div>
+          Logout
         </li>
       </ul>
     </div>
@@ -30,6 +38,24 @@ export default {
   props: {
     isVisible: Boolean,
   },
+  data() {
+    return {
+      windowWidth: window.innerWidth,
+    };
+  },
+  watch: {
+    isVisible(newVal) {
+      if (newVal && this.windowWidth > 600) {
+        this.closeMenu();
+      }
+    },
+  },
+  mounted() {
+    window.addEventListener("resize", this.handleResize);
+  },
+  unmounted() {
+    window.removeEventListener("resize", this.handleResize);
+  },
   methods: {
     navigateTo(route) {
       this.$emit("close");
@@ -37,6 +63,12 @@ export default {
     },
     closeMenu() {
       this.$emit("close");
+    },
+    handleResize() {
+      this.windowWidth = window.innerWidth;
+      if (this.windowWidth > 600 && this.isVisible) {
+        this.closeMenu();
+      }
     },
   },
 };
@@ -77,16 +109,51 @@ li {
   display: flex;
   align-items: center;
   gap: 10px;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+}
+
+.icon-container i {
+  font-size: 1.5rem;
 }
 
 li:hover {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.slide-fade-enter-active,
-.slide-fade-leave-active {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+.fas.fa-home {
+  color: #01a9f2;
 }
+
+.fas.fa-users {
+  color: #d86890;
+}
+
+.fas.fa-chart-line {
+  color: #ff5722;
+}
+
+.fas.fa-building {
+  color: #4caf50;
+}
+
+.fas.fa-briefcase {
+  color: #ff9800;
+}
+
+.fas.fa-sign-out-alt {
+  color: #006ba6;
+}
+
 .slide-fade-enter,
 .slide-fade-leave-to {
   opacity: 0;

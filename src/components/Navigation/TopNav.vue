@@ -1,5 +1,6 @@
 <template>
   <div class="topnav">
+    <i class="fas fa-bars bars-icon" @click="$emit('toggle-mobile-nav')"></i>
     <h3 class="heading">HR Dashboard</h3>
 
     <div class="user-profile">
@@ -18,7 +19,6 @@
         alt="User Profile"
         class="profile-image"
       />
-      <i class="fas fa-bars bars-icon" @click="$emit('toggle-mobile-nav')"></i>
     </div>
   </div>
 </template>
@@ -55,6 +55,7 @@ export default {
   font-family: "Unica One", sans-serif;
   font-weight: 500;
   font-size: 1.4rem;
+  margin: 0;
 }
 
 .search-container {
@@ -116,7 +117,7 @@ export default {
     display: block;
     color: #006ba6;
     font-size: 20px;
-    margin-left: 10px;
+
     cursor: pointer;
   }
 }
