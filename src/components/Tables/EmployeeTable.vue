@@ -76,8 +76,15 @@
         >
           {{ employee.status }}
         </div>
+        <span style="display: flex; align-items: center">
+          <img
+            :src="employee.photoUrl"
+            alt="Profile Photo"
+            class="profile-photo"
+          />
 
-        <h3 class="employee-name">{{ employee.name }}</h3>
+          <span class="employee-name">{{ employee.name }}</span>
+        </span>
         <p>
           <span class="employee-stat">Position:</span> {{ employee.position }}
         </p>
@@ -269,9 +276,7 @@ export default {
 
 .employee-name {
   font-weight: 400;
-  color: #0a4d86;
-  margin-top: 0px;
-  margin-bottom: 20px;
+  color: #000;
   font-family: "Inter", sans-serif;
 }
 

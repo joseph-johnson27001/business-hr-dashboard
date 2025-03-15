@@ -261,7 +261,7 @@ export default {
 
 .employee-card {
   background: white;
-  padding: 15px 10px;
+  padding: 20px 10px;
   border-bottom: 1px solid #ddd;
   font-family: "Assistant", sans-serif;
 }
@@ -308,6 +308,12 @@ export default {
 .employee-name-container {
   display: flex;
   align-items: center;
+}
+
+.employee-name {
+  font-weight: 400;
+  color: #000;
+  font-family: "Inter", sans-serif;
 }
 
 /* Pagination */

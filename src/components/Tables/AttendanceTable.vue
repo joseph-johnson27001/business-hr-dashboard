@@ -276,6 +276,12 @@ export default {
   gap: 10px;
 }
 
+.employee-name {
+  font-weight: 400;
+  color: #000;
+  font-family: "Inter", sans-serif;
+}
+
 .employee-name-container {
   display: flex;
   align-items: center;

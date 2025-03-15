@@ -208,7 +208,7 @@ export default {
 
 .job-title {
   font-weight: 400;
-  color: #0a4d86;
+  color: #000;
   margin-top: 0px;
   margin-bottom: 20px;
   font-family: "Inter", sans-serif;
@@ -252,7 +252,7 @@ export default {
   padding: 15px 10px;
   border-bottom: 1px solid #ddd;
   font-family: "Assistant", sans-serif;
-  position: relative; /* To position status in top right */
+  position: relative;
 }
 
 .job-status-mobile {
