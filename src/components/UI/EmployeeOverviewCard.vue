@@ -43,7 +43,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 10px 20px;
   border-radius: 5px;
   border: 1px solid #ccc;
   background: white;
@@ -65,8 +65,11 @@ export default {
 
 h2 {
   margin: 0;
-  font-size: 1.3rem;
-  color: #333;
+  font-family: "Inter";
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 5px;
+  color: #006ba6;
 }
 
 .position {
