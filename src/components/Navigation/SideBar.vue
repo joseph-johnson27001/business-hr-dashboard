@@ -71,6 +71,7 @@ export default {
 <style scoped>
 .sidebar {
   width: 175px;
+  font-family: "Inter", sans-serif;
   background-color: #ffffff;
   height: 100%;
   border-right: 1px solid #ccc;
@@ -107,6 +108,10 @@ nav li {
   cursor: pointer;
   margin: 15px 10px;
   border-radius: 5px;
+  font-weight: 400;
+  color: #222;
+  font-size: 0.9rem;
+  align-items: center;
 }
 
 nav li:hover {

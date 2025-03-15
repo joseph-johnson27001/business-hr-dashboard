@@ -43,7 +43,7 @@ export default {
   border: 1px solid #ccc;
   padding: 20px;
   display: flex;
-  font-family: "Roboto";
+  font-family: "Inter";
   flex-direction: column;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
@@ -69,14 +69,14 @@ export default {
 }
 
 .stat-value {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
   color: #006ba6;
   text-align: left;
 }
 
 .stat-title {
-  font-size: 14px;
+  font-size: 13px;
   color: #888;
 }
 </style>

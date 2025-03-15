@@ -4,6 +4,7 @@
     <div class="main-content">
       <SideBar class="sidebar" />
       <div class="content">
+        <!-- INSERT NEW NAVIGATION HERE -->
         <router-view></router-view>
       </div>
     </div>
@@ -13,6 +14,12 @@
 <script>
 import SideBar from "@/components/Navigation/SideBar.vue";
 import TopNav from "@/components/Navigation/TopNav.vue";
+import { Chart, registerables } from "chart.js";
+
+Chart.register(...registerables);
+
+// Set global font family for all charts
+Chart.defaults.font.family = '"Inter", sans-serif';
 
 export default {
   name: "App",
