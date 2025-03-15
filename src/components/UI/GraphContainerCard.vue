@@ -14,9 +14,6 @@
       </select>
     </div>
 
-    <!-- Divider -->
-    <!-- <hr class="divider" /> -->
-
     <div class="graph-content">
       <slot></slot>
     </div>
@@ -87,15 +84,6 @@ export default {
   cursor: pointer;
   outline: none;
 }
-
-/*  
-.divider {
-  margin: 15px 0;
-  width: 100%;
-  border: 0;
-  border-top: 1px solid #ddd;
-}
-*/
 
 .graph-content {
   display: flex;
