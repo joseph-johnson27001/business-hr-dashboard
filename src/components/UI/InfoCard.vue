@@ -30,7 +30,7 @@ export default {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: column;
-  font-family: "Roboto";
+  font-family: "Inter";
 }
 
 .chart-container {

@@ -59,7 +59,7 @@ export default {
   flex-direction: column;
   padding: 20px;
   box-sizing: border-box;
-  font-family: "Roboto";
+  font-family: "Inter";
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
 }
 
