@@ -1,10 +1,13 @@
 <template>
   <div class="layout">
-    <TopNav />
+    <TopNav @toggle-mobile-nav="isMobileNavVisible = !isMobileNavVisible" />
     <div class="main-content">
       <SideBar class="sidebar" />
       <div class="content">
-        <!-- INSERT NEW NAVIGATION HERE -->
+        <MobileNav
+          :isVisible="isMobileNavVisible"
+          @close="isMobileNavVisible = false"
+        />
         <router-view></router-view>
       </div>
     </div>
@@ -14,6 +17,7 @@
 <script>
 import SideBar from "@/components/Navigation/SideBar.vue";
 import TopNav from "@/components/Navigation/TopNav.vue";
+import MobileNav from "@/components/Navigation/MobileNav.vue";
 import { Chart, registerables } from "chart.js";
 
 Chart.register(...registerables);
@@ -26,6 +30,12 @@ export default {
   components: {
     SideBar,
     TopNav,
+    MobileNav,
+  },
+  data() {
+    return {
+      isMobileNavVisible: false,
+    };
   },
 };
 </script>

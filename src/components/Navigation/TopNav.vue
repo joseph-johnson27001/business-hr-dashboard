@@ -18,7 +18,7 @@
         alt="User Profile"
         class="profile-image"
       />
-      <i class="fas fa-bars bars-icon"></i>
+      <i class="fas fa-bars bars-icon" @click="$emit('toggle-mobile-nav')"></i>
     </div>
   </div>
 </template>
