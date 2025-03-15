@@ -239,6 +239,12 @@ export default {
   }
 }
 
+@media (max-width: 1000px) {
+  .graphs-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 800px) {
   .top-container {
     grid-template-columns: 1fr;
@@ -246,10 +252,6 @@ export default {
 
   .kpi-container {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .graphs-container {
-    grid-template-columns: 1fr;
   }
 }
 
