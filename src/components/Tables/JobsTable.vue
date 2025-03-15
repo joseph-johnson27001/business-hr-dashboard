@@ -209,8 +209,8 @@ export default {
 .job-title {
   font-weight: 400;
   color: #000;
-  margin-top: 0px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   font-family: "Inter", sans-serif;
 }
 
