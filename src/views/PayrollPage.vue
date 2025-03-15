@@ -172,7 +172,6 @@ export default {
   gap: 10px;
 }
 
-/* Responsive Layout */
 @media (max-width: 1400px) {
   .kpi-grid {
     grid-template-columns: repeat(3, 1fr);

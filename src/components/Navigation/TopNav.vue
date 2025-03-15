@@ -18,6 +18,7 @@
         alt="User Profile"
         class="profile-image"
       />
+      <i class="fas fa-bars bars-icon"></i>
     </div>
   </div>
 </template>
@@ -103,9 +104,20 @@ export default {
   cursor: pointer;
 }
 
+.bars-icon {
+  display: none;
+}
+
 @media (max-width: 600px) {
   .search-input {
     display: none;
+  }
+  .bars-icon {
+    display: block;
+    color: #006ba6;
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
   }
 }
 </style>
