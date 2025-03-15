@@ -3,7 +3,7 @@
     <TopNav @toggle-mobile-nav="isMobileNavVisible = !isMobileNavVisible" />
     <div class="main-content">
       <SideBar class="sidebar" />
-      <div class="content">
+      <div class="content" ref="contentArea">
         <MobileNav
           :isVisible="isMobileNavVisible"
           @close="isMobileNavVisible = false"
@@ -36,6 +36,22 @@ export default {
     return {
       isMobileNavVisible: false,
     };
+  },
+  watch: {
+    $route() {
+      this.scrollToTop();
+    },
+  },
+  mounted() {
+    this.scrollToTop();
+  },
+  methods: {
+    scrollToTop() {
+      const contentArea = this.$refs.contentArea;
+      if (contentArea) {
+        contentArea.scrollTop = 0;
+      }
+    },
   },
 };
 </script>
