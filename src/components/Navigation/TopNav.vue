@@ -102,4 +102,10 @@ export default {
   margin-right: 10px;
   cursor: pointer;
 }
+
+@media (max-width: 600px) {
+  .search-input {
+    display: none;
+  }
+}
 </style>

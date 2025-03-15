@@ -97,4 +97,24 @@ h2 {
 .leave {
   color: #fbc02d;
 }
+
+@media (max-width: 400px) {
+  .details {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 300px) {
+  h2 {
+    font-size: 1rem;
+  }
+
+  .profile-image img {
+    height: 50px;
+    width: 50px;
+  }
+  details {
+    font-size: 0.6rem;
+  }
+}
 </style>
