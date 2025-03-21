@@ -110,7 +110,7 @@ nav li {
   border-radius: 5px;
   font-weight: 400;
   color: #222;
-  font-size: 0.9rem;
+  font-family: "Assistant", sans-serif;
   align-items: center;
 }
 
