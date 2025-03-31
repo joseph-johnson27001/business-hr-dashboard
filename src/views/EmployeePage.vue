@@ -80,12 +80,10 @@
           <EmployeePerformanceGraph
             v-if="graphData.employeePerformance"
             :labels="
-              graphData.employeePerformance[timeframes['Employee Performance']]
-                .labels
+              graphData.employeePerformance[timeframes['Performance']].labels
             "
             :data="
-              graphData.employeePerformance[timeframes['Employee Performance']]
-                .data
+              graphData.employeePerformance[timeframes['Performance']].data
             "
           />
         </GraphContainerCard>
@@ -97,14 +95,10 @@
           <EmployeeSatisfactionGraph
             v-if="graphData.employeeSatisfaction"
             :labels="
-              graphData.employeeSatisfaction[
-                timeframes['Employee Satisfaction']
-              ].labels
+              graphData.employeeSatisfaction[timeframes['Satisfaction']].labels
             "
             :data="
-              graphData.employeeSatisfaction[
-                timeframes['Employee Satisfaction']
-              ].data
+              graphData.employeeSatisfaction[timeframes['Satisfaction']].data
             "
           />
         </GraphContainerCard>
@@ -172,9 +166,9 @@ export default {
       kpiData: null,
       graphData: {},
       timeframes: {
-        "Employee Satisfaction": "monthly",
+        Satisfaction: "monthly",
         "Total Absences": "monthly",
-        "Employee Performance": "monthly",
+        Performance: "monthly",
         Salary: "monthly",
       },
     };
