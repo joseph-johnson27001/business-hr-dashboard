@@ -146,12 +146,12 @@ nav li {
 
 .sidebar.collapsed nav li {
   justify-content: center;
-  padding: 10px !important;
+  padding: 10px;
 }
 
 nav li.active {
   background-color: #f0f0f0;
-  border-radius: 8px;
+  border-radius: 4%;
 }
 
 nav li:hover {
