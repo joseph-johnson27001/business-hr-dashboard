@@ -83,7 +83,7 @@ export default {
       if (this.isCollapsed) {
         setTimeout(() => {
           this.textVisible = true;
-        }, 100);
+        }, 50);
       } else {
         this.textVisible = false;
       }
