@@ -10,29 +10,53 @@
     <nav>
       <ul>
         <div>
-          <li @click="goTo('/')">
-            <i class="fas fa-home"></i>
+          <li :class="{ active: currentRoute === '/' }" @click="goTo('/')">
+            <div class="icon-container">
+              <i class="fas fa-home"></i>
+            </div>
             <span v-show="textVisible">Home</span>
           </li>
-          <li @click="goTo('/employees')">
-            <i class="fas fa-users"></i>
+          <li
+            :class="{ active: currentRoute === '/employees' }"
+            @click="goTo('/employees')"
+          >
+            <div class="icon-container">
+              <i class="fas fa-users"></i>
+            </div>
             <span v-show="textVisible">Employees</span>
           </li>
-          <li @click="goTo('/payroll')">
-            <i class="fas fa-chart-line"></i>
+          <li
+            :class="{ active: currentRoute === '/payroll' }"
+            @click="goTo('/payroll')"
+          >
+            <div class="icon-container">
+              <i class="fas fa-chart-line"></i>
+            </div>
             <span v-show="textVisible">Payroll</span>
           </li>
-          <li @click="goTo('/attendance')">
-            <i class="fas fa-building"></i>
+          <li
+            :class="{ active: currentRoute === '/attendance' }"
+            @click="goTo('/attendance')"
+          >
+            <div class="icon-container">
+              <i class="fas fa-building"></i>
+            </div>
             <span v-show="textVisible">Attendance</span>
           </li>
-          <li @click="goTo('/jobs')">
-            <i class="fas fa-briefcase"></i>
+          <li
+            :class="{ active: currentRoute === '/jobs' }"
+            @click="goTo('/jobs')"
+          >
+            <div class="icon-container">
+              <i class="fas fa-briefcase"></i>
+            </div>
             <span v-show="textVisible">Jobs</span>
           </li>
         </div>
         <li @click="goTo('')" style="margin-top: auto">
-          <i class="fas fa-sign-out-alt"></i>
+          <div class="icon-container">
+            <i class="fas fa-sign-out-alt"></i>
+          </div>
           <span v-show="textVisible">Logout</span>
         </li>
       </ul>
@@ -48,6 +72,11 @@ export default {
       isCollapsed: false,
       textVisible: true,
     };
+  },
+  computed: {
+    currentRoute() {
+      return this.$route.path;
+    },
   },
   methods: {
     toggleSidebar() {
@@ -70,7 +99,7 @@ export default {
 
 <style scoped>
 .sidebar {
-  width: 175px;
+  width: 200px;
   font-family: "Inter", sans-serif;
   background-color: #ffffff;
   height: 100%;
@@ -99,19 +128,30 @@ nav ul {
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: space-between;
   margin-top: 5px;
 }
 
 nav li {
-  padding: 10px;
-  cursor: pointer;
-  margin: 15px 10px;
-  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 10px 5px;
+  margin: 5px 10px;
+  border-radius: 4px;
   font-weight: 400;
   color: #222;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
   font-family: "Assistant", sans-serif;
-  align-items: center;
+}
+
+.sidebar.collapsed nav li {
+  justify-content: center;
+  padding: 10px !important;
+}
+
+nav li.active {
+  background-color: #f0f0f0;
+  border-radius: 8px;
 }
 
 nav li:hover {
@@ -122,11 +162,24 @@ nav li span {
   display: inline-block;
 }
 
+.icon-container {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.sidebar.collapsed .icon-container {
+  margin-right: 0px;
+}
+
 i {
   font-size: 1.2rem;
   width: 25px;
   text-align: center;
-  margin-right: 10px;
+  color: inherit;
 }
 
 .fas.fa-home {
