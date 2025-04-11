@@ -118,7 +118,7 @@ export default {
 }
 
 .sidebar.collapsed {
-  width: 65px;
+  width: 75px;
 }
 
 nav {
@@ -141,7 +141,7 @@ nav li {
   display: flex;
   align-items: center;
   padding: 10px;
-  margin: 5px;
+  margin: 10px;
   border-radius: 8px;
   font-weight: 400;
   color: #222;
@@ -153,7 +153,6 @@ nav li {
 
 .sidebar.collapsed nav li {
   justify-content: center;
-  padding: 10px;
 }
 
 nav li.active {
