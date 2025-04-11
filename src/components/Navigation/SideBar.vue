@@ -71,11 +71,17 @@ export default {
     return {
       isCollapsed: false,
       textVisible: true,
+      currentRoute: "",
     };
   },
-  computed: {
-    currentRoute() {
-      return this.$route.path;
+  mounted() {
+    this.$nextTick(() => {
+      this.currentRoute = this.$route.path;
+    });
+  },
+  watch: {
+    $route(to) {
+      this.currentRoute = to.path;
     },
   },
   methods: {
@@ -83,7 +89,7 @@ export default {
       if (this.isCollapsed) {
         setTimeout(() => {
           this.textVisible = true;
-        }, 50);
+        }, 75);
       } else {
         this.textVisible = false;
       }
@@ -134,14 +140,15 @@ nav ul {
 nav li {
   display: flex;
   align-items: center;
-  padding: 10px 5px;
-  margin: 5px 10px;
-  border-radius: 4px;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 8px;
   font-weight: 400;
   color: #222;
   cursor: pointer;
   transition: background-color 0.2s ease;
   font-family: "Assistant", sans-serif;
+  text-wrap: nowrap;
 }
 
 .sidebar.collapsed nav li {
@@ -151,7 +158,7 @@ nav li {
 
 nav li.active {
   background-color: #f0f0f0;
-  border-radius: 4%;
+  border-radius: 8px;
 }
 
 nav li:hover {
@@ -168,7 +175,7 @@ nav li span {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 10px;
+  margin-right: 7px;
 }
 
 .sidebar.collapsed .icon-container {
@@ -177,7 +184,6 @@ nav li span {
 
 i {
   font-size: 1.2rem;
-  width: 25px;
   text-align: center;
   color: inherit;
 }
