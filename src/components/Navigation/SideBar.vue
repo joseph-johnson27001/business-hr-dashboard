@@ -124,7 +124,9 @@ export default {
 nav {
   width: 100%;
   height: 100%;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 nav ul {
@@ -134,7 +136,8 @@ nav ul {
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 5px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 nav li {
