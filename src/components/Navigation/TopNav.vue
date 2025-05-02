@@ -127,4 +127,10 @@ export default {
     cursor: pointer;
   }
 }
+
+@media (max-width: 300px) {
+  .heading {
+    display: none;
+  }
+}
 </style>
