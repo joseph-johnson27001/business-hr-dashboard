@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 
 import Home from "@/views/HomePage.vue";
 import Employees from "@/views/EmployeesPage.vue";
@@ -40,9 +40,8 @@ const routes = [
     component: Jobs,
   },
 ];
-
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(), // This switches to hash mode
   routes,
 });
 
