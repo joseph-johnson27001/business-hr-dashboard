@@ -69,15 +69,13 @@ export default {
   name: "SideBar",
   data() {
     return {
-      isCollapsed: false,
-      textVisible: true,
-      currentRoute: "",
+      isCollapsed: true,
+      textVisible: false,
+      currentRoute: null,
     };
   },
-  mounted() {
-    this.$nextTick(() => {
-      this.currentRoute = this.$route.path;
-    });
+  created() {
+    this.currentRoute = this.$route.path;
   },
   watch: {
     $route(to) {
@@ -93,7 +91,6 @@ export default {
       } else {
         this.textVisible = false;
       }
-
       this.isCollapsed = !this.isCollapsed;
     },
     goTo(route) {
