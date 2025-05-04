@@ -10,14 +10,14 @@
     <nav>
       <ul>
         <div>
-          <li :class="{ active: currentRoute === '/' }" @click="goTo('/')">
+          <li :class="{ active: currentPath === '/' }" @click="goTo('/')">
             <div class="icon-container">
               <i class="fas fa-home"></i>
             </div>
             <span v-show="textVisible">Home</span>
           </li>
           <li
-            :class="{ active: currentRoute === '/employees' }"
+            :class="{ active: currentPath === '/employees' }"
             @click="goTo('/employees')"
           >
             <div class="icon-container">
@@ -26,7 +26,7 @@
             <span v-show="textVisible">Employees</span>
           </li>
           <li
-            :class="{ active: currentRoute === '/payroll' }"
+            :class="{ active: currentPath === '/payroll' }"
             @click="goTo('/payroll')"
           >
             <div class="icon-container">
@@ -35,7 +35,7 @@
             <span v-show="textVisible">Payroll</span>
           </li>
           <li
-            :class="{ active: currentRoute === '/attendance' }"
+            :class="{ active: currentPath === '/attendance' }"
             @click="goTo('/attendance')"
           >
             <div class="icon-container">
@@ -44,7 +44,7 @@
             <span v-show="textVisible">Attendance</span>
           </li>
           <li
-            :class="{ active: currentRoute === '/jobs' }"
+            :class="{ active: currentPath === '/jobs' }"
             @click="goTo('/jobs')"
           >
             <div class="icon-container">
@@ -71,15 +71,18 @@ export default {
     return {
       isCollapsed: true,
       textVisible: false,
-      currentRoute: null,
+      currentPath: null,
     };
   },
-  created() {
-    this.currentRoute = this.$route.path;
+  mounted() {
+    if (this.currentPath === null) {
+      this.currentPath = this.$route.path;
+    }
   },
   watch: {
     $route(to) {
-      this.currentRoute = to.path;
+      // Update currentPath on route change
+      this.currentPath = to.path;
     },
   },
   methods: {
