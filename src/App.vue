@@ -11,6 +11,7 @@
         <router-view></router-view>
       </div>
     </div>
+    <DashboardButton />
   </div>
 </template>
 
@@ -19,6 +20,7 @@ import SideBar from "@/components/Navigation/SideBar.vue";
 import TopNav from "@/components/Navigation/TopNav.vue";
 import MobileNav from "@/components/Navigation/MobileNav.vue";
 import { Chart, registerables } from "chart.js";
+import DashboardButton from "./components/UI/DashboardButton.vue";
 
 Chart.register(...registerables);
 
@@ -31,6 +33,7 @@ export default {
     SideBar,
     TopNav,
     MobileNav,
+    DashboardButton,
   },
   data() {
     return {
